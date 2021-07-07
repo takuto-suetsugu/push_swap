@@ -1,4 +1,4 @@
-# push_swap
+# push_swap（開発中）
 42Tokyoプロジェクト（Level_2)
 
 課題概要
