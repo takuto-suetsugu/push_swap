@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/07 16:45:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/07 17:03:20 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,31 @@ int IsAscending(int argc, char **argv)
     return (1);
 }
 */
+
+char AllAtoi(int argc, char **argv)
+{
+    int i;
+    int j;
+
+    i = 1;
+    j = 0;
+    while (i < argc)
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            argv[i][j] = ft_atoi(argv[i][j]);
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
+
 int main(int argc, char **argv)
 {
     //t_stacks    stacks;
+    char    **stack;
 
     if (HasNotNumber(argc, argv))
     {
@@ -88,5 +110,10 @@ int main(int argc, char **argv)
     }
     
     write(1, "OK\n", 3);
+
+    stack = AllAtoi(argc, argv);
+
+    int n = ft_strlen(*stack);
+    write(1, n, 1);
     return (0);
 }
