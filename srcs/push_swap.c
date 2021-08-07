@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/07/05 22:56:12 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/07 16:45:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int HasNotNumber(int argc, char **argv)
         j = 0;
         while (argv[i][j])
         {
-            if (!('0' <= argv[i][j] && argv[i][j] <= '9'))
+            if (!(ft_isdigit(argv[i][j])))
                 return (1);
             j++;
         }
@@ -73,7 +73,7 @@ int IsAscending(int argc, char **argv)
 */
 int main(int argc, char **argv)
 {
-    t_stacks    stacks;
+    //t_stacks    stacks;
 
     if (HasNotNumber(argc, argv))
     {
