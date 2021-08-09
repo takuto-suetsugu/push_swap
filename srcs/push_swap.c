@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-int HasNotNumber(int argc, char **argv)
+int HasNonInteger(int argc, char **argv)
 {
     int i;
     int j;
@@ -75,17 +75,18 @@ int main(int argc, char **argv)
 {
     t_stacks    stacks;
 
-    if (HasNotNumber(argc, argv))
+    if (HasNonInteger(argc, argv))
     {
         write(1, "Error\n", 6);
         return (0);
     }
-    
     if (argc <= 2 /*|| IsAscending(argc, argv)*/)
     {
         write(1, "\n", 1);
         return (0);
     }
+
+    
     
     write(1, "OK\n", 3);
     return (0);
