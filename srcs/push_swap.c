@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/09 15:44:47 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/09 16:02:37 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,38 +72,26 @@ int IsAscending(int argc, char **argv)
 }
 */
 
-int	*AllAtoi(int argc, char **argv)
-{
-	int	*numbers;
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
-			return (0);
-		numbers[i - 1] = ft_atoi(argv[i]);
-		i++;
-	}
-	return (numbers);
-}
-
 int	AddList(int argc, char **argv)
 {
 	struct linked_stack	*new_stack;
 	int					i;
+	long				stack_n;
 
 	i = 1;
-	if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
-		return (1);
-	new_stack = malloc (sizeof(char) * linked_stack);
-	ft_strlcpy((*new_stack).number, number, sizeof(number));
+	while (i < argc)
+	{
+		stack_n = ft_atoi(argv[i]);
+		if (stack_n > 2147483647 || stack_n < -2147483648)
+			return (1);
+		new_stack = malloc (sizeof(struct linked_stack));
+		(*new_stack).number = stack_n;
+	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	stack_numbers = AllAtoi(argc, argv);
 	if (HasNonInteger(argc, argv) || HasSameNumber(argc, argv))
 	{
 		write(1, "Error\n", 6);
@@ -114,11 +102,11 @@ int	main(int argc, char **argv)
 		write(1, "\n", 1);
 		return (0);
 	}
-	write(1, "OK\n", 3);
-	if (AddList(argc, argv) == 0)
+	if (AddList(argc, argv))
 	{
 		write(1, "Error\n", 6);
 		return (0);
 	}
+	
 	return (0);
 }
