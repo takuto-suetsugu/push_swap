@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/09 18:13:59 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/09 18:16:34 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ struct	t_stack *SearchTail(void)
 	return p;
 }
 
-void	AddStack(int value)
+void	AddNode(int value)
 {
 	struct t_stack	*tail;
 	struct t_stack	*new_stack;
@@ -96,7 +96,7 @@ int	CreateList(int argc, char **argv)
 		stack_n = ft_atoi(argv[i]);
 		if (stack_n > 2147483647 || stack_n < -2147483648)
 			return (1);
-		AddStack(stack_n);
+		AddNode(stack_n);
 	}
 	return (0);
 }
