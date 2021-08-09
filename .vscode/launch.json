@@ -1,34 +1,15 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "gcc - アクティブ ファイルのビルドとデバッグ",
-            "type": "cppdbg",
+            "name": "c_debug",
+            "type": "lldb",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "C/C++: gcc build active file"
-        },
-        {
-            "name": "libft_test",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "with_libft"
+            "program": "${fileDirname}/a.out",
+            "args": ["./test/ex_1"],
+            "cwd": "${fileDirname}",
+            "preLaunchTask": "c_build",
+            "postDebugTask": "rm_file"
         }
     ]
 }
