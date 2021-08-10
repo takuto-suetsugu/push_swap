@@ -1,3 +1,3 @@
 git add .
-git commit -m "Updated"
+git commit -m "些細な変更"
 git push
