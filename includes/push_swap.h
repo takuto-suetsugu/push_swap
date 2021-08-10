@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/10 19:05:33 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/10 23:47:32 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct  s_node
 	struct s_node*	prev;
 }               t_node;
 
-int 	main(int argc, char **argv);
+int		main(int argc, char **argv);
 int		HasNonInteger(int argc, char **argv);
 int		HasSameNumber(int argc, char **argv);
 void	AddNode(long node_n, t_node *guard_addr);

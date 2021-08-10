@@ -58,7 +58,7 @@ void	CreateList(int argc, char **argv)
 }
 
 int	main(int argc, char **argv)
-{	
+{
 	if (HasNonInteger(argc, argv) || HasSameNumber(argc, argv))
 	{
 		write(1, "Error\n", 6);
