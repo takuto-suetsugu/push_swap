@@ -6,13 +6,13 @@
 #    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/05 14:30:56 by tsuetsug          #+#    #+#              #
-#    Updated: 2021/07/05 15:27:13 by tsuetsug         ###   ########.fr        #
+#    Updated: 2021/08/10 13:46:04 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
-SRCS	= srcs/push_swap.c
+SRCS	= srcs/push_swap.c srcs/error_check.c
 
 OBJ		= *.o
 
