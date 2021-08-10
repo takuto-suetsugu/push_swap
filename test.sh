@@ -7,6 +7,8 @@ make clean
 
 ./push_swap 2one1 44444444 999999
 
-./push_swap 1 2 9 11111.111110
+./push_swap 1 2 9 2147483648
 
 ./push_swap 1
+
+./push_swap 1 5 6 100000 19 193 1933

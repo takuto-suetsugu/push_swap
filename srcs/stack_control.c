@@ -6,33 +6,49 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/10 13:41:19 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:03:59 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-struct	t_stack *SearchTail(void)
+t_node	*SearchTail(t_node *guard_addr)
 {
-	struct	t_stack	*p = &list;
-
-	while (p->next != &GuardNode)
-		p = p->next;
+	t_node  *p;
 	
-	return p;
+	p = guard_addr;
+	while (p->next != guard_addr)
+		p = p->next;
+	return (p);
 }
 
-void	AddNode(int value)
+void	AddNode(long node_n, t_node *guard_addr)
 {
-	struct t_stack	*tail;
-	struct t_stack	*new_stack;
+	t_node	*tail;
+	t_node	*new_node;
 
-	tail = SearchTail();
-	new_stack = malloc (sizeof(struct linked_stack));
-	if (new_stack == NULL)
-		return (1);
-	new_stack->number = value;
-	new_stack->next = NULL;
-	new_stack->prev = tail;
-	tail->next = new_stack;
+	tail = SearchTail(guard_addr);
+	new_node = malloc (sizeof(t_node));
+	if (new_node == NULL)
+	{
+		write(1, "Error\n", 6);
+		exit (2);
+	}
+	new_node->number = node_n;
+	new_node->next = guard_addr;
+	new_node->prev = tail;
+	tail->next = new_node;
+	guard_addr->prev = new_node;
+}
+
+void	DeleteNode(t_node *guard_addr)
+{
+	t_node	*tail;
+	t_node	*prev_node;
+
+	tail = SearchTail(guard_addr);
+	prev_node = tail->prev;
+	prev_node->next = guard_addr;
+	guard_addr->prev = prev_node;
+	free (tail);	
 }
