@@ -13,19 +13,19 @@
 
 #include "../includes/push_swap.h"
 
-void	InitGuard(t_node *guard_addr)
+void	InitGuard(t_node *guard_node)
 {
-	guard_addr->number = 0;
-	guard_addr->next = guard_addr;
-	guard_addr->prev = guard_addr;
+	guard_node->number = 0;
+	guard_node->next = guard_node;
+	guard_node->prev = guard_node;
 }
 
-void	PrintList(t_node *guard_addr)
+void	PrintList(t_node *guard_node)
 {
 	t_node	*p;
 
-	p = guard_addr->next;
-	while (p != guard_addr)
+	p = guard_node->next;
+	while (p != guard_node)
 	{
 		printf("%ld, ", p->number);
 		p = p->next;
@@ -33,28 +33,29 @@ void	PrintList(t_node *guard_addr)
 	printf("\n");
 }
 
-void	CreateList(int argc, char **argv)
+void	CreateStackA(int number_integers, char **integers_list)
 {
 	int		i;
 	long	node_n;
-	t_node	guard_node;
+	t_node	guard_A;
 
-	InitGuard(&guard_node);
+	InitGuard(&guard_A);
 	i = 1;
 	node_n = 0;
-	while (i < argc)
+	while (i < number_integers)
 	{
-		node_n = ft_atoi(argv[i]);
+		node_n = ft_atoi(integers_list[i]);
 		if (node_n < -2147483648 || 2147483647 < node_n)
 		{
 			write(1, "Error\n", 6);
 			exit (1);
 		}
-		AddNode(node_n, &guard_node);
+		AddNode(node_n, &guard_A);
 		i++;
 	}
-	DeleteNode(&guard_node);
-	PrintList(&guard_node);
+	DeleteNode(&guard_A);
+	RotateNode(&guard_A);
+	PrintList(&guard_A);
 }
 
 int	main(int argc, char **argv)
@@ -66,10 +67,10 @@ int	main(int argc, char **argv)
 	}
 	if (argc <= 2)
 	{
-		write(1, "\n", 1);
+		write(1, "1 node\n", 7);
 		return (0);
 	}
 	write(1, "OK: ", 4);
-	CreateList(argc, argv);
+	CreateStackA(argc, argv);
 	return (0);
 }

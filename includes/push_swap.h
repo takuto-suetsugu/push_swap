@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/11 14:13:04 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:05:17 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ typedef struct  s_node
 int		main(int argc, char **argv);
 int		HasNonInteger(int argc, char **argv);
 int		HasSameNumber(int argc, char **argv);
-void	AddNode(long node_n, t_node *guard_addr);
-void	DeleteNode(t_node *guard_addr);
+void	CreateStackA(int number_integers, char **integers_list);
+void	AddNode(long node_n, t_node *guard_node);
+void	DeleteNode(t_node *guard_node);
+void	SwapNode(t_node *guard_node);
+void	RotateNode(t_node *guard_node);
 
 #endif

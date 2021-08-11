@@ -6,12 +6,9 @@
         {
             "type": "shell",
             "label": "c_build",
-            "command": "gcc",
+            "command": "make",
             "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "re"
             ],
             "group": "build"
         }

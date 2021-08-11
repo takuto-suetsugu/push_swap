@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Wed Aug 11 13:23:38 2021
+# Make data base, printed on Wed Aug 11 15:28:37 2021
 
 # Variables
 
@@ -40,11 +40,11 @@ VSCODE_NODE_CACHED_DATA_DIR = /Users/tsuetsug/Library/Application Support/Code/C
 # environment
 VERBOSE_LOGGING = true
 # environment
-VSCODE_LOGS = /Users/tsuetsug/Library/Application Support/Code/logs/20210811T132335
+VSCODE_LOGS = /Users/tsuetsug/Library/Application Support/Code/logs/20210811T152131
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000pbh0005kw/T/vscode-ipc-e5b90018-1c51-4c9b-8535-859f5550ffe7.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000pbh0005kw/T/vscode-ipc-d0b6b4fb-774d-45c0-b722-b55729164e45.sock
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.GPTok5pyD8/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.a2x9K9T7eW/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki
 # makefile (from `Makefile', line 19)
@@ -56,7 +56,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.hYaPqfbQ2W/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.M2Er9JapsJ/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -122,7 +122,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.3656
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 21)
@@ -133,6 +133,8 @@ BYELLOW = \033[1;33m
 OFF = \033[1;0m
 # environment
 __CF_USER_TEXT_ENCODING = 0x165C:0x1:0xE
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -143,6 +145,8 @@ BWHITE = \033[1;37m
 LC_ALL = C
 # environment
 TMOUT = 86400
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -158,9 +162,9 @@ BRED = \033[1;31m
 # environment
 LANG = C
 # environment
-VSCODE_PID = 35292
+VSCODE_PID = 1092
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=4/100=4%
+# Load=76/1024=7%, Rehash=0, Collisions=4/102=4%
 
 # Pattern-specific Variable Values
 
@@ -237,7 +241,7 @@ clean:
 
 push_swap:
 #  Implicit rule search has not been done.
-#  Last modified 2021-08-11 13:21:43
+#  Last modified 2021-08-11 14:30:24
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 36):
@@ -263,6 +267,6 @@ push_swap:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Aug 11 13:23:38 2021
+# Finished Make data base on Wed Aug 11 15:28:37 2021
 
  
