@@ -20,12 +20,6 @@ void	InitGuard(t_node *guard_node)
 	guard_node->prev = guard_node;
 }
 
-void	InitCommand(t_command *guard_command)
-{
-	ft_memcpy(guard_command->command, "\0", sizeof(1));
-	guard_command->next = guard_command;
-}
-
 void	PrintNumber(t_node *guard_node)
 {
 	t_node	*p;
@@ -39,18 +33,6 @@ void	PrintNumber(t_node *guard_node)
 	printf("\n");
 }
 
-void	PrintList(t_command *guard_command)
-{
-	t_command	*p;
-
-	p = guard_command->next;
-	while (p != guard_command)
-	{
-		printf("%s, ", p->command);
-		p = p->next;
-	}
-	printf("\n");
-}
 
 void	CreateStackA(int number_integers, char **integers_list, t_node *guard_A)
 {
@@ -97,8 +79,8 @@ int	main(int argc, char **argv)
 	CreateStackA(argc, argv, &guard_A);
 	PrintNumber(&guard_A);
 
-	if (argv == 3)
-		Sort3Stack(&guard_A, guard_command);
-	PrintList(&guard_command);
+	if (argc == 3)
+		Sort3Stack(&guard_A, &guard_command);
+	PrintCommand(&guard_command);
 	return (0);
 }
