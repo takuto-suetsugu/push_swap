@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/11 16:09:29 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:17:38 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,21 @@ void	RotateNode(t_node *guard_node)
 	guard_node->prev = second_node;
 	guard_node->next = first_node;
 	first_node->prev = guard_node;
+}
+
+void	ReverseRotateNode(t_node *guard_node)
+{
+	t_node	*first_node;
+	t_node	*last_node;
+	t_node	*second_last_node;
+
+	first_node = guard_node->prev;
+	last_node = guard_node->next;
+	second_last_node = last_node->next;
+	first_node->next = last_node;
+	last_node->prev = first_node;
+	last_node->next = guard_node;
+	guard_node->prev = last_node;
+	guard_node->next = second_last_node;
+	second_last_node->prev = guard_node;
 }

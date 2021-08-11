@@ -54,7 +54,7 @@ void	CreateStackA(int number_integers, char **integers_list)
 		i++;
 	}
 	DeleteNode(&guard_A);
-	RotateNode(&guard_A);
+	ReverseRotateNode(&guard_A);
 	PrintList(&guard_A);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/11 16:05:17 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:17:46 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	AddNode(long node_n, t_node *guard_node);
 void	DeleteNode(t_node *guard_node);
 void	SwapNode(t_node *guard_node);
 void	RotateNode(t_node *guard_node);
+void	ReverseRotateNode(t_node *guard_node);
 
 #endif
