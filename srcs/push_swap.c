@@ -22,7 +22,7 @@ void	InitGuard(t_node *guard_node)
 
 void	InitCommand(t_command *guard_command)
 {
-	guard_command->command = "\0";
+	ft_memcpy(guard_command->command, "\0", sizeof(1));
 	guard_command->next = guard_command;
 }
 
@@ -39,14 +39,14 @@ void	PrintNumber(t_node *guard_node)
 	printf("\n");
 }
 
-void	PrintList(t_node *guard_node)
+void	PrintList(t_command *guard_command)
 {
-	t_node	*p;
+	t_command	*p;
 
-	p = guard_node->next;
-	while (p != guard_node)
+	p = guard_command->next;
+	while (p != guard_command)
 	{
-		printf("%ld, ", p->number);
+		printf("%s, ", p->command);
 		p = p->next;
 	}
 	printf("\n");
@@ -70,9 +70,6 @@ void	CreateStackA(int number_integers, char **integers_list, t_node *guard_A)
 		AddNode(node_n, guard_A);
 		i++;
 	}
-	DeleteNode(guard_A);
-	ReverseRotateNode(guard_A);
-	PrintList(guard_A);
 }
 
 int	main(int argc, char **argv)
@@ -82,7 +79,9 @@ int	main(int argc, char **argv)
 	t_command	guard_command;
 
 	InitGuard(&guard_A);
+	guard_A.number = 1;
 	InitGuard(&guard_B);
+	guard_B.number = 2;
 	InitCommand(&guard_command);
 	if (HasNonInteger(argc, argv) || HasSameNumber(argc, argv))
 	{
@@ -96,5 +95,10 @@ int	main(int argc, char **argv)
 	}
 	write(1, "OK: ", 4);
 	CreateStackA(argc, argv, &guard_A);
+	PrintNumber(&guard_A);
+
+	if (argv == 3)
+		Sort3Stack(&guard_A, guard_command);
+	PrintList(&guard_command);
 	return (0);
 }

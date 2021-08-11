@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/11 17:05:28 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/11 17:11:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct  s_node
 
 typedef	struct s_command
 {
-	char*				command;
+	char				command[4];
 	struct s_command*	next;
 }				t_command;
 
