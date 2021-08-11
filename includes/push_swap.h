@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/11 16:17:46 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/11 17:05:28 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,16 @@ typedef struct  s_node
 	struct s_node*	prev;
 }               t_node;
 
+typedef	struct s_command
+{
+	char*				command;
+	struct s_command*	next;
+}				t_command;
+
 int		main(int argc, char **argv);
 int		HasNonInteger(int argc, char **argv);
 int		HasSameNumber(int argc, char **argv);
-void	CreateStackA(int number_integers, char **integers_list);
+void	CreateStackA(int number_integers, char **integers_list, t_node *guard_A);
 void	AddNode(long node_n, t_node *guard_node);
 void	DeleteNode(t_node *guard_node);
 void	SwapNode(t_node *guard_node);
