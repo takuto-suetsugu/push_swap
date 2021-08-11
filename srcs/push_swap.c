@@ -45,7 +45,7 @@ void	CreateList(int argc, char **argv)
 	while (i < argc)
 	{
 		node_n = ft_atoi(argv[i]);
-		if (node_n > 2147483647 || node_n < -2147483648)
+		if (node_n < -2147483648 || 2147483647 < node_n)
 		{
 			write(1, "Error\n", 6);
 			exit (1);

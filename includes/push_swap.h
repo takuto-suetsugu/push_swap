@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/10 23:47:32 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:13:04 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int		HasNonInteger(int argc, char **argv);
 int		HasSameNumber(int argc, char **argv);
 void	AddNode(long node_n, t_node *guard_addr);
 void	DeleteNode(t_node *guard_addr);
-t_node	*SearchTail(t_node *guard_addr);
 
 #endif
