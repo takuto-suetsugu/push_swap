@@ -1,0 +1,25 @@
+make re --dry-run --keep-going --print-directory
+make: Entering directory `/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap'
+echo "\033[1;37mRemoving object-files...\033[1;0m"
+rm -f *.o
+cd libft && /Library/Developer/CommandLineTools/usr/bin/make clean
+ 
+make[1]: Entering directory `/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap/libft'
+rm -f ft_memset.o ft_memcpy.o ft_memccpy.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memcpy.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strdup.o ft_strlcat.o ft_strlen.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strlcpy.o ft_tolower.o ft_toupper.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_strmapi.o ft_split.o ft_itoa.o ft_putchar_fd.o ft_putnbr_fd.o ft_putendl_fd.o ft_putstr_fd.o
+make[1]: Leaving directory `/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap/libft'
+ 
+echo "\033[1;32mClean done.\033[1;0m"
+echo "\033[1;37mRemoving object-files and binary-files...\033[1;0m"
+rm -f push_swap
+cd libft && /Library/Developer/CommandLineTools/usr/bin/make fclean
+ 
+make[1]: Entering directory `/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap/libft'
+rm -f ft_memset.o ft_memcpy.o ft_memccpy.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memcpy.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strdup.o ft_strlcat.o ft_strlen.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strlcpy.o ft_tolower.o ft_toupper.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_strmapi.o ft_split.o ft_itoa.o ft_putchar_fd.o ft_putnbr_fd.o ft_putendl_fd.o ft_putstr_fd.o
+rm -f libft.a
+ 
+make[1]: Leaving directory `/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap/libft'
+ 
+echo "\033[1;32mFclean done.\033[1;0m"
+ 
+make: Leaving directory `/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap'
+ 

@@ -12,7 +12,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	InitGuard(t_node *guard_node)
 {
@@ -41,23 +40,23 @@ static void	PrintNumber(t_node *guard_node)
 }
 
 
-static void	CreateStackA(int number_integers, char **integers_list, t_node *guard_A)
+static void	CreateStackA(int argc, char **argv, t_node *guard_A)
 {
 	int		i;
 	long	node_n;
 
-	i = 1;
+	i = argc - 1;
 	node_n = 0;
-	while (i < number_integers)
+	while (i > 0)
 	{
-		node_n = ft_atoi(integers_list[i]);
+		node_n = ft_atoi(argv[i]);
 		if (node_n < -2147483648 || 2147483647 < node_n)
 		{
 			write(1, "Error\n", 6);
 			exit (1);
 		}
 		AddNode(node_n, guard_A);
-		i++;
+		i--;
 	}
 }
 
@@ -79,17 +78,20 @@ int	main(int argc, char **argv)
 	}
 	write(1, "\nOK!\n", 5);
 	CreateStackA(argc, argv, &guard_A);
-	
+
 	printf("Before Sort: ");
 	PrintNumber(&guard_A);
 
-
-	//SortProcess(&guard_A, &guard_B, &guard_command);
+    SortProcess(&guard_A, &guard_B, &guard_command);
 
 	printf("After  Sort: ");
 	PrintNumber(&guard_A);
 
 
+	printf("\x1b[32m");
+	printf("Command List\n"); 
+	printf("\x1b[39m");
+	
 	PrintCommand(&guard_command);
 	return (0);
 }

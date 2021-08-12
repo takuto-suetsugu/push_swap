@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/12 11:41:07 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:28:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    AddCommand(t_command *guard_command, char *type)
 		write(1, "Error\n", 6);
 		exit (4);
 	}
-	ft_memcpy(guard_command->command, type, sizeof(type));
+	ft_memcpy(new_command->command, type, sizeof(type));
 	new_command->next = guard_command->next;
     guard_command->next = new_command;
 }

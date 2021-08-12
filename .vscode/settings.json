@@ -1,4 +1,20 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
-    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap",
+            "binaryPath": "/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap/push_swap",
+            "binaryArgs": [
+                "11 5"
+            ]
+        },
+        {
+            "cwd": "/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap",
+            "binaryPath": "/Users/tact/Dev/42Tokyo/Cursus/Cluster&github/2_level/push_swap/push_swap",
+            "binaryArgs": [
+                "11 5"
+            ]
+        }
+    ]
 }

@@ -4,19 +4,16 @@
     // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
             "name": "c_debug",
             "type": "lldb",
             "request": "launch",
-            "program": "/Users/tsuetsug/Downloads/Cluster/push_swap/push_swap",
+            "program": "push_swap",
             "args": [
-                "3",
-                "8",
                 "9",
-                "2147483647"
+                "5"
             ],
-            "cwd": "/Users/tsuetsug/Downloads/Cluster/push_swap",
+            "cwd": "",
             "preLaunchTask": "c_build"
         }
     ]
