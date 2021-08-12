@@ -12,6 +12,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 void	InitGuard(t_node *guard_node)
 {
@@ -20,7 +21,13 @@ void	InitGuard(t_node *guard_node)
 	guard_node->prev = guard_node;
 }
 
-void	PrintNumber(t_node *guard_node)
+void	InitCommand(t_command *guard_command)
+{
+	ft_memcpy(guard_command->command, "\0", sizeof(1));
+	guard_command->next = guard_command;
+}
+
+static void	PrintNumber(t_node *guard_node)
 {
 	t_node	*p;
 
@@ -34,7 +41,7 @@ void	PrintNumber(t_node *guard_node)
 }
 
 
-void	CreateStackA(int number_integers, char **integers_list, t_node *guard_A)
+static void	CreateStackA(int number_integers, char **integers_list, t_node *guard_A)
 {
 	int		i;
 	long	node_n;
@@ -70,17 +77,19 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	if (argc <= 2)
-	{
-		write(1, "1 node\n", 7);
-		return (0);
-	}
-	write(1, "OK: ", 4);
+	write(1, "\nOK!\n", 5);
 	CreateStackA(argc, argv, &guard_A);
+	
+	printf("Before Sort: ");
 	PrintNumber(&guard_A);
 
-	if (argc == 3)
-		Sort3Stack(&guard_A, &guard_command);
+
+	//SortProcess(&guard_A, &guard_B, &guard_command);
+
+	printf("After  Sort: ");
+	PrintNumber(&guard_A);
+
+
 	PrintCommand(&guard_command);
 	return (0);
 }
