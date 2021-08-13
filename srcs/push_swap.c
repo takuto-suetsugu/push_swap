@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/10 16:37:44 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:01:02 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +23,7 @@ void	InitCommand(t_command *guard_command)
 	ft_memcpy(guard_command->command, "\0", sizeof(1));
 	guard_command->next = guard_command;
 }
-
+/*
 static void	PrintNumber(t_node *guard_node)
 {
 	t_node	*p;
@@ -32,11 +31,12 @@ static void	PrintNumber(t_node *guard_node)
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		printf("%ld, ", p->number);
+		printf("%ld, ", p->num);
 		p = p->prev;
 	}
 	printf("\n");
 }
+*/
 
 static void	CreateStackA(int argc, char **argv, t_node *guard_A)
 {
@@ -65,9 +65,9 @@ int	main(int argc, char **argv)
 	t_command	guard_command;
 
 	InitGuard(&guard_A);
-	guard_A.number = 1;
+	guard_A.num = 1;
 	InitGuard(&guard_B);
-	guard_B.number = 2;
+	guard_B.num = 2;
 	InitCommand(&guard_command);
 	if (HasNonInteger(argc, argv) || HasSameNumber(argc, argv))
 	{
@@ -75,9 +75,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	CreateStackA(argc, argv, &guard_A);
-
-	printf("Before Sort: ");
-	PrintNumber(&guard_A);
+	SortProcess(&guard_A, &guard_B, &guard_command);
+	/*
 
     SortProcess(&guard_A, &guard_B, &guard_command);
 
@@ -88,7 +87,7 @@ int	main(int argc, char **argv)
 	printf("\x1b[32m");
 	printf("Command List\n"); 
 	printf("\x1b[39m");
-	
+	*/
 	PrintCommand(&guard_command);
 	return (0);
 }

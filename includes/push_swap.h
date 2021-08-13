@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/12 11:47:23 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 12:09:49 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct  s_node
 {
-	long			number;
+	long			num;
 	struct s_node*	next;
 	struct s_node*	prev;
 }               t_node;
@@ -45,7 +45,7 @@ void	ReverseRotateNode(t_node *guard_node);
 void	PrintCommand(t_command *guard_command);
 void    AddCommand(t_command *guard_command, char *type);
 void    SA_SB(t_node *guard_node, t_command *guard_command);
-
-void    Sort3Stack(t_node *guard_node, t_command *guard_command);
+void	RA_RB(t_node *guard_node, t_command *guard_command);
+void	RRA_RRB(t_node *guard_node, t_command *guard_command);
 
 #endif

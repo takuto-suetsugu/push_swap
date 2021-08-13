@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/12 12:28:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:15:06 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ void	PrintCommand(t_command *guard_command)
 	}
 }
 
-void    AddCommand(t_command *guard_command, char *type)
+void	AddCommand(t_command *guard_command, char *type)
 {
 	t_command	*new_command;
+	t_command	*tail;
 
 	new_command = malloc (sizeof(t_command));
 	if (new_command == NULL)
@@ -35,16 +36,37 @@ void    AddCommand(t_command *guard_command, char *type)
 		write(1, "Error\n", 6);
 		exit (4);
 	}
+	tail = guard_command->next;
+	while (tail->next != guard_command)
+		tail = tail->next;
 	ft_memcpy(new_command->command, type, sizeof(type));
-	new_command->next = guard_command->next;
-    guard_command->next = new_command;
+	new_command->next = guard_command;
+	tail->next = new_command;
 }
 
-void    SA_SB(t_node *guard_node, t_command *guard_command)
+void	SA_SB(t_node *guard_node, t_command *guard_command)
 {
-    SwapNode(guard_node);
-    if (guard_node->number == 1)
-        AddCommand(guard_command, "sa");
-    if (guard_node->number == 2)
-        AddCommand(guard_command, "sb");
+	SwapNode(guard_node);
+	if (guard_node->num == 1)
+		AddCommand(guard_command, "sa");
+	if (guard_node->num == 2)
+		AddCommand(guard_command, "sb");
+}
+
+void	RA_RB(t_node *guard_node, t_command *guard_command)
+{
+	RotateNode(guard_node);
+	if (guard_node->num == 1)
+		AddCommand(guard_command, "ra");
+	if (guard_node->num == 2)
+		AddCommand(guard_command, "rb");
+}
+
+void	RRA_RRB(t_node *guard_node, t_command *guard_command)
+{
+	ReverseRotateNode(guard_node);
+	if (guard_node->num == 1)
+		AddCommand(guard_command, "rra");
+	if (guard_node->num == 2)
+		AddCommand(guard_command, "rrb");
 }

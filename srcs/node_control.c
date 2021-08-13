@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/11 17:53:27 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 12:08:51 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	AddNode(long node_n, t_node *guard_node)
 		write(1, "Error\n", 6);
 		exit (2);
 	}
-	new_node->number = node_n;
+	new_node->num = node_n;
 	new_node->next = guard_node;
 	new_node->prev = first_node;
 	first_node->next = new_node;
