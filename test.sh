@@ -26,5 +26,8 @@ echo -e "\ninput: 0 2 1"
 echo -e "\ninput: 2 1 0"
 ./push_swap 2 1 0
 
+echo -e "\ninput: 1 2 3 4 5"
+./push_swap 1 2 3 4 5
+
 echo -e "\ninput: 2 1 3 4 5"
 ./push_swap 2 1 3 4 5

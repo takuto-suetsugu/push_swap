@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 13:15:06 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:57:21 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,17 @@ void	RRA_RRB(t_node *guard_node, t_command *guard_command)
 		AddCommand(guard_command, "rra");
 	if (guard_node->num == 2)
 		AddCommand(guard_command, "rrb");
+}
+
+void	PA_PB(t_node *guard_src, t_node *guard_dst, t_command *guard_command)
+{
+	t_node	*first_src;
+	
+	first_src = guard_src->prev;
+	AddNode(first_src->num, guard_dst);
+	DeleteNode(guard_src);
+	if (guard_src->num == 1)
+		AddCommand(guard_command, "pa");
+	if (guard_src->num == 2)
+		AddCommand(guard_command, "pb");
 }

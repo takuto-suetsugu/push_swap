@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 12:08:51 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:48:07 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	DeleteNode(t_node *guard_node)
 	second_node = first_node->prev;
 	second_node->next = guard_node;
 	guard_node->prev = second_node;
-	free (first_node);
 }
 
 void	SwapNode(t_node *guard_node)

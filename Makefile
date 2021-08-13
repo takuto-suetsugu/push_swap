@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+         #
+#    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/05 14:30:56 by tsuetsug          #+#    #+#              #
-#    Updated: 2021/08/12 11:45:41 by tsuetsug         ###   ########.fr        #
+#    Updated: 2021/08/13 15:04:50 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
 SRCS	= srcs/push_swap.c srcs/error_check.c srcs/node_control.c \
-			srcs/command_control.c srcs/sort_stack.c
+			srcs/command_control.c srcs/sort_stack.c srcs/sort_utils.c \
 
 OBJ		= *.o
 
