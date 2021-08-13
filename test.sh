@@ -20,14 +20,20 @@ echo -e "\ninput: 8 5"
 echo -e "\ninput: -10 99"
 ./push_swap -10 99
 
-echo -e "\ninput: 0 2 1"
-./push_swap 0 2 1
+echo -e "\ninput: 0 3 1"
+./push_swap 0 3 1
 
-echo -e "\ninput: 2 1 0"
-./push_swap 2 1 0
+echo -e "\ninput: 2 4 3 1"
+./push_swap 2 4 3 1
+
+echo -e "\ninput: 2 0 3 1"
+./push_swap 2 0 3 1
+
+echo -e "\ninput: 4 1 3 2"
+./push_swap 4 1 3 2
 
 echo -e "\ninput: 1 2 3 4 5"
 ./push_swap 1 2 3 4 5
 
-echo -e "\ninput: 2 1 3 4 5"
-./push_swap 2 1 3 4 5
+echo -e "\ninput: 4 2 1 5 3"
+./push_swap 4 2 1 5 3

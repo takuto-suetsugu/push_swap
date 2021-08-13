@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 15:03:37 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:38:21 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,32 @@ int	CountNode(t_node *guard_node)
 		count++;
 	}
 	return (count);
+}
+
+int IsMinNode(t_node *top, t_node *guard_node)
+{
+    t_node	*p;
+
+	p = guard_node->prev;
+	while (p != guard_node)
+	{
+		if (p->num < top->num)
+			return (0);
+		p = p->prev;
+	}
+	return (1);
+}
+
+int IsMaxNode(t_node *top, t_node *guard_node)
+{
+    t_node	*p;
+
+	p = guard_node->prev;
+	while (p != guard_node)
+	{
+		if (p->num > top->num)
+			return (0);
+		p = p->prev;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 15:03:18 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:49:34 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,38 @@ static void	Sort3Stack(t_node *guard_node, t_command *guard_command)
 static void	Sort5Stack(t_node *guard_A, t_node *guard_B,
 						t_command *guard_command)
 {
+	t_node	*A_top;
+	t_node	*A_bottom;
+	t_node	*B_top;
+
 	if (IsAscending(guard_A))
 		return ;
-	PA_PB(guard_A, guard_B, guard_command);
-	PA_PB(guard_A, guard_B, guard_command);
+	while (CountNode(guard_A) > 3)
+		PA_PB(guard_A, guard_B, guard_command);
 	Sort3Stack(guard_A, guard_command);
+	A_top = guard_A->prev;
+	A_bottom = guard_A->next;
+	B_top = guard_B->prev;
+	while (CountNode(guard_B))
+	{
+		if (IsMinNode(B_top, guard_A) || IsMaxNode(B_top, guard_A))
+			PA_PB(guard_B, guard_A, guard_command);
+		else{
+			while (!(A_bottom->num < B_top->num && B_top->num < A_top->num))
+			{
+				RA_RB(guard_A, guard_command);
+				A_top = guard_A->prev;
+				A_bottom = guard_A->next;
+				B_top = guard_B->prev;
+			}
+			PA_PB(guard_B, guard_A, guard_command);
+			A_top = guard_A->prev;
+			A_bottom = guard_A->next;
+			B_top = guard_B->prev;
+		}
+	}
+	while (!(IsAscending(guard_A)))
+		RA_RB(guard_A, guard_command);
 }
 
 void	SortProcess(t_node *guard_A, t_node *guard_B, t_command *guard_command)
