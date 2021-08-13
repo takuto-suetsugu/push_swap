@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 17:38:21 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:57:10 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ int	IsAscending(t_node *guard_node)
 	while (p->prev != guard_node)
 	{
 		if (p->num > (p->prev)->num)
+			return (0);
+		p = p->prev;
+	}
+	return (1);
+}
+
+int	IsDescending(t_node *guard_node)
+{
+	t_node	*p;
+
+	p = guard_node->prev;
+	while (p->prev != guard_node)
+	{
+		if (p->num < (p->prev)->num)
 			return (0);
 		p = p->prev;
 	}
