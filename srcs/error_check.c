@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/10 17:57:57 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:07:29 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int	HasNonInteger(int argc, char **argv)
 
 	i = 1;
 	j = 0;
+	
 	while (i < argc)
 	{
 		j = 0;
+		if (argv[i][0] == '-' && argv[i][1] != '\0')
+			j++;
 		while (argv[i][j])
 		{
 			if (!(ft_isdigit(argv[i][j])))

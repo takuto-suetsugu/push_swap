@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/12 11:55:06 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:02:40 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void    Sort2Stack(t_node *guard_node, t_command *guard_command)
 	second = first->prev;
 	if (first->number > second->number)
 		SA_SB(guard_node, guard_command);
+	else
+		AddCommand(guard_command, "\0");
 }
 
 /*
@@ -61,7 +63,7 @@ void	SortProcess(t_node *guard_A, t_node *guard_B, t_command *guard_command)
 	printf("node_count_A = %d\n", node_count_A);
 
 	if (node_count_A <= 1)
-		write(1, "\n", 1);
+		AddCommand(guard_command, "\0");
 	else if (node_count_A == 2)
 		Sort2Stack(guard_A, guard_command);
 	else if (node_count_A == 3)

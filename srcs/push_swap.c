@@ -29,15 +29,14 @@ static void	PrintNumber(t_node *guard_node)
 {
 	t_node	*p;
 
-	p = guard_node->next;
+	p = guard_node->prev;
 	while (p != guard_node)
 	{
 		printf("%ld, ", p->number);
-		p = p->next;
+		p = p->prev;
 	}
 	printf("\n");
 }
-
 
 static void	CreateStackA(int argc, char **argv, t_node *guard_A)
 {
@@ -75,7 +74,6 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	write(1, "\nOK!\n", 5);
 	CreateStackA(argc, argv, &guard_A);
 
 	printf("Before Sort: ");
