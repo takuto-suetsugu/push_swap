@@ -15,7 +15,6 @@
 
 void	InitGuard(t_node *guard_node)
 {
-	guard_node->number = 0;
 	guard_node->next = guard_node;
 	guard_node->prev = guard_node;
 }
