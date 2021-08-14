@@ -8,6 +8,7 @@ workflows:
       - link:
           requires: 
             - compile
+      - test
 
 
 jobs:
@@ -44,3 +45,14 @@ jobs:
       # persist as artifact
       - store_artifacts:
           path: program
+
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run: 
+          name: Test
+          command: bash test
+      - save_npm

@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 17:53:34 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/14 12:33:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int		IsDescending(t_node *guard_node);
 int		CountNode(t_node *guard_node);
 int 	IsMaxNode(t_node *top, t_node *guard_node);
 int 	IsMinNode(t_node *top, t_node *guard_node);
+void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
 
 #endif

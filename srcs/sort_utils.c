@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 17:57:10 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/14 12:34:34 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,30 @@ int IsMaxNode(t_node *top, t_node *guard_node)
 		p = p->prev;
 	}
 	return (1);
+}
+
+void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command)
+{
+	t_node	*A_top;
+	t_node	*A_bottom;
+	t_node	*B_top;
+
+	A_top = guard_dst->prev;
+	A_bottom = guard_dst->next;
+	B_top = guard_src->prev;
+	if (IsMinNode(B_top, guard_dst) || IsMaxNode(B_top, guard_dst))
+	{
+		while (!(IsAscending(guard_dst)))
+			RA_RB(guard_dst, guard_command);
+	}
+	else{
+		while (!(A_bottom->num < B_top->num && B_top->num < A_top->num))
+		{
+			RA_RB(guard_dst, guard_command);
+			A_top = guard_dst->prev;
+			A_bottom = guard_dst->next;
+			B_top = guard_src->prev;
+		}
+	}
+	PA_PB(guard_src, guard_dst, guard_command);
 }
