@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 13:01:02 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/14 09:49:49 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	InitGuard(t_node *guard_node)
 
 void	InitCommand(t_command *guard_command)
 {
-	ft_memcpy(guard_command->command, "\0", sizeof(1));
+	ft_bzero(guard_command->command, sizeof(guard_command->command));
 	guard_command->next = guard_command;
 }
+
 /*
 static void	PrintNumber(t_node *guard_node)
 {
