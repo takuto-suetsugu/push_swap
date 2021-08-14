@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/14 12:34:34 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/14 18:59:32 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,16 @@ int IsMaxNode(t_node *top, t_node *guard_node)
 	return (1);
 }
 
-void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command)
+int IsMedianNode(t_node *top, t_node *guard_node)
 {
-	t_node	*A_top;
-	t_node	*A_bottom;
-	t_node	*B_top;
+    t_node	*p;
 
-	A_top = guard_dst->prev;
-	A_bottom = guard_dst->next;
-	B_top = guard_src->prev;
-	if (IsMinNode(B_top, guard_dst) || IsMaxNode(B_top, guard_dst))
+	p = guard_node->prev;
+	while (p != guard_node)
 	{
-		while (!(IsAscending(guard_dst)))
-			RA_RB(guard_dst, guard_command);
+		if (p->num > top->num)
+			return (0);
+		p = p->prev;
 	}
-	else{
-		while (!(A_bottom->num < B_top->num && B_top->num < A_top->num))
-		{
-			RA_RB(guard_dst, guard_command);
-			A_top = guard_dst->prev;
-			A_bottom = guard_dst->next;
-			B_top = guard_src->prev;
-		}
-	}
-	PA_PB(guard_src, guard_dst, guard_command);
+	return (1);
 }
