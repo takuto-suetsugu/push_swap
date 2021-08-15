@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/14 09:39:47 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/15 22:26:05 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	RRA_RRB(t_node *guard_node, t_command *guard_command)
 void	PA_PB(t_node *guard_src, t_node *guard_dst, t_command *guard_command)
 {
 	t_node	*first_src;
-	
+
 	first_src = guard_src->prev;
 	AddNode(first_src->num, guard_dst);
 	DeleteNode(guard_src);

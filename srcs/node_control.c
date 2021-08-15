@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_control.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/13 14:48:07 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/15 23:12:50 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,30 @@ void	ReverseRotateNode(t_node *guard_node)
 	guard_node->prev = last_node;
 	guard_node->next = second_last_node;
 	second_last_node->prev = guard_node;
+}
+
+void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command)
+{
+	t_node	*src_A;
+	t_node	*src_bottom;
+	t_node	*dst_top;
+
+	src_A = guard_dst->prev;
+	src_bottom = guard_dst->next;
+	dst_top = guard_src->prev;
+	if (IsMinNode(dst_top, guard_dst) || IsMaxNode(dst_top, guard_dst))
+	{
+		while (!(IsAscending(guard_dst)))
+			RA_RB(guard_dst, guard_command);
+	}
+	else{
+		while (!(src_bottom->num < dst_top->num && dst_top->num < src_A->num))
+		{
+			RA_RB(guard_dst, guard_command);
+			src_A = guard_dst->prev;
+			src_bottom = guard_dst->next;
+			dst_top = guard_src->prev;
+		}
+	}
+	PA_PB(guard_src, guard_dst, guard_command);
 }
