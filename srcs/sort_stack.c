@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/15 23:50:09 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:07:17 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,21 @@ static void	Sort3Stack(t_node *guard_node, t_command *guard_command)
 		SA_SB(guard_node, guard_command);
 }
 
-static void	Sort6Stack(t_node *guard_A, t_node *guard_B,
+static void	Sort6Stack(t_node *guard_src, t_node *guard_dst,
 						t_command *guard_command)
 {
-	if (IsAscending(guard_A))
+	t_node *dst_top;
+
+	if (IsAscending(guard_src))
 		return ;
-	while (CountNode(guard_A) > 3)
-		PA_PB(guard_A, guard_B, guard_command);
-	Sort3Stack(guard_A, guard_command);
-	while (CountNode(guard_B))
-		InsertNode(guard_B, guard_A, guard_command);
-	while (!(IsAscending(guard_A)))
-		RA_RB(guard_A, guard_command);
+	dst_top = guard_dst->prev;
+	while (CountNode(guard_src) > 3)
+		PA_PB(guard_src, guard_dst, guard_command);
+	Sort3Stack(guard_src, guard_command);
+	while (guard_dst->prev != dst_top)
+		InsertNode(guard_dst, guard_src, guard_command);
+	while (!(IsAscending(guard_src)))
+		RA_RB(guard_src, guard_command);
 }
 
 static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
@@ -62,49 +65,89 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 	t_node	*pivot_node;
 	t_node	*top_A;
 	t_node	*top_B;
+	t_node	*sortted_head;
+	t_node	*sortted_tail;
 
 	pivot_node = guard_A->prev;
+	sortted_head = guard_A;
+	sortted_tail = guard_A;
+	top_A = guard_A->prev;
+	top_B = guard_B->prev;
 	while (!(IsAscending(guard_A)))
 	{
-		pivot_node = guard_A->prev;
-		if (IsMinNode(pivot_node, guard_A) == 1)
-			RA_RB(guard_A, guard_command);
 		top_A = guard_A->prev;
-		while (top_A != guard_A && !(IsAscending(guard_A)))
+		while (IsMinNode(top_A, guard_A))
+		{
+			RA_RB(guard_A, guard_command);
+			if (sortted_head == guard_A)
+				sortted_head = guard_A->next;
+			top_A = guard_A->prev;
+		}
+
+		printf("head: %ld\n", sortted_head->num);
+		printf("tail: %ld\n", sortted_tail->num);
+		pivot_node = guard_A->prev;
+		printf("pivot: %ld\n", pivot_node->num);
+
+		while (!(IsClassified(guard_A, pivot_node, sortted_head, sortted_tail)))
 		{
 			if (top_A->num <= pivot_node->num)
 				PA_PB(guard_A, guard_B, guard_command);
 			else
 				RA_RB(guard_A, guard_command);
-			top_A = top_A->prev;
+			top_A = guard_A->prev;
+		printf("A\n");
+		PrintNumber(guard_A);
+		printf("\nB\n");
+		PrintNumber(guard_B);
+		printf("\n");
 		}
+
+
+		while (sortted_tail != guard_A->next && sortted_tail != guard_A)
+			RA_RB(guard_A, guard_command);
 		while (CountNode(guard_B) > 6)
 		{
-			pivot_node = guard_B->prev;
-			if (IsMinNode(pivot_node, guard_B) == 1)
+			top_B = guard_B->prev;
+			while (IsMinNode(top_B, guard_B))
 			{
 				PA_PB(guard_B, guard_A, guard_command);
 				RA_RB(guard_A, guard_command);
+				top_B = guard_B->prev;
 			}
-			top_B = guard_B->prev;
-			while (top_B != guard_A)
+			pivot_node = guard_B->next;
+			while (top_B != pivot_node)
 			{
 				if (top_B->num > pivot_node->num)
 					PA_PB(guard_B, guard_A, guard_command);
 				else
 					RA_RB(guard_B, guard_command);
-				top_B = top_B->prev;
+				top_B = guard_B->prev;
 			}
 		}
+
 		if (CountNode(guard_B) == 2)
 			Sort2Stack(guard_B, guard_command);
 		else if (CountNode(guard_B) >= 3)
 			Sort6Stack(guard_B, guard_A, guard_command);
-		while (CountNode(guard_B) > 0)
+		if (sortted_head == guard_A)
+			sortted_head = guard_B->prev;
+		sortted_tail = guard_B->next;
+
+		while (CountNode(guard_B))
 		{
 			PA_PB(guard_B, guard_A, guard_command);
 			RA_RB(guard_A, guard_command);
 		}
+
+		printf("A\n");
+		PrintNumber(guard_A);
+		printf("\nB\n");
+		PrintNumber(guard_B);
+		printf("\n");
+		printf("head: %ld\n", sortted_head->num);
+		printf("tail: %ld\n", sortted_tail->num);
+		printf("pivot: %ld\n", pivot_node->num);
 	}
 }
 

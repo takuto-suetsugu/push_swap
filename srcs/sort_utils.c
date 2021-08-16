@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/14 18:59:32 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:11:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,19 @@ int IsMaxNode(t_node *top, t_node *guard_node)
 	return (1);
 }
 
-int IsMedianNode(t_node *top, t_node *guard_node)
+int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 {
-    t_node	*p;
+	t_node	*p;
 
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		if (p->num > top->num)
+		if (head->num <= p->num && p->num <= tail->num)
+			p = p->prev;
+		else if (p->num <= pivot->num)
 			return (0);
-		p = p->prev;
+		else
+			p = p->prev;
 	}
 	return (1);
 }

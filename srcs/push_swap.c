@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/14 12:02:41 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:37:38 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,16 @@ int	main(int argc, char **argv)
 	SortProcess(&guard_A, &guard_B, &guard_command);
 	PrintCommand(&guard_command);
 	return (0);
+}
+
+void	PrintNumber(t_node *guard)
+{
+	t_node	*p;
+
+	p = guard->prev;
+	while (p != guard)
+	{
+		printf("%ld\n", p->num);
+		p = p->prev;
+	}
 }
