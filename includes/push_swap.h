@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/16 16:35:48 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/19 16:25:21 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int		HasSameNumber(int argc, char **argv);
 
 void	SortProcess(t_node *guard_A, t_node *guard_B, t_command *guard_command);
 
-void	AddNode(long node_n, t_node *guard_node);
+void	CreateNode(long node_n, t_node *guard_node);
+void	AddNode(t_node *add_node, t_node *guard_node);
 void	DeleteNode(t_node *guard_node);
 void	SwapNode(t_node *guard_node);
 void	RotateNode(t_node *guard_node);

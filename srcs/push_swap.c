@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/16 16:37:38 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/19 16:37:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	CreateStackA(int argc, char **argv, t_node *guard_A)
 			write(1, "Error\n", 6);
 			exit (1);
 		}
-		AddNode(node_n, guard_A);
+		CreateNode(node_n, guard_A);
 		i--;
 	}
 }
@@ -72,7 +72,7 @@ void	PrintNumber(t_node *guard)
 	p = guard->prev;
 	while (p != guard)
 	{
-		printf("%ld\n", p->num);
+		printf("%ld, ", p->num);
 		p = p->prev;
 	}
 }

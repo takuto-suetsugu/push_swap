@@ -6,13 +6,13 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/15 23:12:50 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/19 16:30:19 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	AddNode(long node_n, t_node *guard_node)
+void	CreateNode(long node_n, t_node *guard_node)
 {
 	t_node	*first_node;
 	t_node	*new_node;
@@ -29,6 +29,17 @@ void	AddNode(long node_n, t_node *guard_node)
 	new_node->prev = first_node;
 	first_node->next = new_node;
 	guard_node->prev = new_node;
+}
+
+void	AddNode(t_node *add_node, t_node *guard_node)
+{
+	t_node	*first_node;
+
+	first_node = guard_node->prev;
+	add_node->next = guard_node;
+	guard_node->prev = add_node;
+	add_node->prev = first_node;
+	first_node->next = add_node;
 }
 
 void	DeleteNode(t_node *guard_node)

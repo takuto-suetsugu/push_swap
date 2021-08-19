@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/16 17:11:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/19 11:01:40 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		if (head->num <= p->num && p->num <= tail->num)
+		if (head != guard_node && head->num <= p->num && p->num <= tail->num)
 			p = p->prev;
 		else if (p->num <= pivot->num)
 			return (0);

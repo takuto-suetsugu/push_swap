@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/15 22:26:05 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/19 16:32:30 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	PA_PB(t_node *guard_src, t_node *guard_dst, t_command *guard_command)
 	t_node	*first_src;
 
 	first_src = guard_src->prev;
-	AddNode(first_src->num, guard_dst);
 	DeleteNode(guard_src);
+	AddNode(first_src, guard_dst);
 	if (guard_src->num == 1)
 		AddCommand(guard_command, "pb");
 	if (guard_src->num == 2)

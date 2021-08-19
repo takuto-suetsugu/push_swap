@@ -38,11 +38,8 @@ echo -e "\ninput: 1 2 3 4 5"
 echo -e "\ninput: 4 2 1 5 3"
 ./push_swap 4 2 1 5 3
 
-echo -e "\ninput: 4 1 5 7 3 6 2"
-./push_swap 4 1 5 7 3 6 2
-
-echo -e "\ninput: 6 2 7 1 3 5 4"
-./push_swap 6 2 7 1 3 5 4
+echo -e "\ninput: 0 2 3 1 6 5 4"
+./push_swap 0 2 3 1 6 5 4
 
 echo -e "\ninput: 4 2 1 5 3 9 8 7 11 12 13 14 15 16 17 18 "
 ./push_swap 4 2 1 5 3 9 8 7 11 12 13 14 15 16 17 18
