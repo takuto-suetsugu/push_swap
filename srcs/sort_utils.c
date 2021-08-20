@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 17:44:12 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 19:26:29 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,35 @@ int IsMinNode(t_node *top, t_node *guard_node)
 	return (1);
 }
 
+int	IsMinExcludeSorted(t_node *guard_A, t_node *guard_B,
+					t_node *head, t_node *tail)
+{
+	t_node	*top_A;
+	t_node	*p;
+	
+	top_A = guard_A->prev;
+	p = guard_A->prev;
+	if (head != guard_A && head->num <= p->num && p->num <= tail->num)
+		return (0);
+	while (p != guard_A)
+	{
+		if (head != guard_A && head->num <= p->num && p->num <= tail->num)
+			p = p->prev;
+		else if (p->num < top_A->num)
+			return (0);
+		else
+			p = p->prev;
+	}
+	p = guard_B->prev;
+	while (p != guard_B)
+	{
+		if (p->num < top_A->num)
+			return (0);
+		else
+			p = p->prev;
+	}
+	return (1);
+}
 
 int IsMaxNode(t_node *top, t_node *guard_node)
 {
@@ -111,4 +140,36 @@ void	OptimizeRotate(t_node *guard_src, t_command *guard_command)
 		while (!IsAscending(guard_src))
 			RRA_RRB(guard_src, guard_command);
 	}
+}
+
+t_node	*SearchMedian(t_node *guard_node, t_node *head)
+{
+	t_node *check_node;
+	t_node *p;
+	int		over_count;
+	int		remain_count;
+
+	p = guard_node->prev;
+	over_count = -2;
+	remain_count = 0;
+	while (p != head)
+	{
+		p = p->prev;
+		remain_count++;
+	}
+	p = guard_node->prev;
+	check_node = guard_node;
+	while (over_count != remain_count/2)
+	{
+		check_node = check_node->prev;
+		p = guard_node->prev;
+		over_count = 0;
+		while (p != guard_node && p != head)
+		{
+			if (check_node->num < p->num)
+				over_count++;
+			p = p->prev;
+		}
+	}
+	return (check_node);
 }

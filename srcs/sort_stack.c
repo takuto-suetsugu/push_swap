@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 17:44:09 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 19:29:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 	t_node	*sorted_head;
 	t_node	*sorted_tail;
 
-	pivot_node = guard_A->prev;
 	sorted_head = guard_A;
 	sorted_tail = guard_A;
 	top_A = guard_A->prev;
 	top_B = guard_B->prev;
+	pivot_node = SearchMedian(guard_A, sorted_head);
 	while (!(IsAscending(guard_A)))
 	{
 		top_A = guard_A->prev;
-		pivot_node = guard_A->prev;
-		while (IsMinNode(top_A, guard_A))
+		//pivotより小さい→PB
+		while (IsMinExcludeSorted(guard_A, guard_B, sorted_head, sorted_tail))
 		{
 			RA_RB(guard_A, guard_command);
 			if (sorted_head == guard_A)
@@ -94,7 +94,9 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		}
 		while (sorted_tail != guard_A && sorted_tail != guard_A->next)
 			RRA_RRB(guard_A, guard_command);
-		while (CountNode(guard_B) > 6)
+
+		//pivotより大きい→PA、Bが６以下になるようにする
+		while (CountNode(guard_B) >= 6)
 		{
 			top_B = guard_B->prev;
 			while (IsMinNode(top_B, guard_B) && CountNode(guard_B))
@@ -128,6 +130,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			RA_RB(guard_A, guard_command);
 		}
 		sorted_tail = guard_A->next;
+		pivot_node = guard_A->prev;
 	}
 }
 
