@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/19 16:25:21 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 17:09:43 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int 	IsMaxNode(t_node *top, t_node *guard_node);
 int 	IsMinNode(t_node *top, t_node *guard_node);
 int		IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail);
 void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
-
+void	OptimizeRotate(t_node *guard_src, t_command *guard_command);
 
 void	PrintNumber(t_node *guard);
 

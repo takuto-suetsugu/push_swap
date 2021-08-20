@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 15:23:40 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 17:44:12 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int IsMinNode(t_node *top, t_node *guard_node)
 	return (1);
 }
 
+
 int IsMaxNode(t_node *top, t_node *guard_node)
 {
     t_node	*p;
@@ -84,4 +85,30 @@ int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 			p = p->prev;
 	}
 	return (1);
+}
+
+void	OptimizeRotate(t_node *guard_src, t_command *guard_command)
+{
+	t_node	*min_src;
+	int		min_distance_from_top;
+	
+	if (IsAscending(guard_src))
+			return ;
+	min_src = guard_src->prev;
+	min_distance_from_top = 0;
+	while (!IsMinNode(min_src, guard_src))
+	{
+		min_src = min_src->prev;
+		min_distance_from_top++;
+	}
+	if (CountNode(guard_src)/2 >= min_distance_from_top)
+	{
+		while (!IsAscending(guard_src))
+			RA_RB(guard_src, guard_command);
+	}
+	else
+	{
+		while (!IsAscending(guard_src))
+			RRA_RRB(guard_src, guard_command);
+	}
 }
