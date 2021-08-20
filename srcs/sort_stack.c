@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 14:59:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 15:23:12 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	Sort3Stack(t_node *guard_node, t_command *guard_command)
 static void	Sort6Stack(t_node *guard_src, t_node *guard_dst,
 						t_command *guard_command)
 {
-	t_node *dst_top;
+	t_node	*dst_top;
 
 	if (IsAscending(guard_src))
 		return ;
@@ -85,7 +85,6 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			top_A = guard_A->prev;
 		}
 		pivot_node = guard_A->prev;
-
 		while (!(IsClassified(guard_A, pivot_node, sortted_head, sortted_tail)))
 		{
 			if (top_A->num <= pivot_node->num)
@@ -94,11 +93,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 				RA_RB(guard_A, guard_command);
 			top_A = guard_A->prev;
 		}
-		if (sortted_tail != guard_A)
-		{
-			while (sortted_tail != guard_A->next)
-				RA_RB(guard_A, guard_command);
-		}
+		while (sortted_tail != guard_A && sortted_tail != guard_A->next)
+			RA_RB(guard_A, guard_command);
 		while (CountNode(guard_B) > 6)
 		{
 			top_B = guard_B->prev;
