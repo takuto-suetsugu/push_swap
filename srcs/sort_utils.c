@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/19 11:01:40 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/19 22:54:57 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
+		ヘッドは設定されてるけどテイルが設定されていない時に起きるバ
 		if (head != guard_node && head->num <= p->num && p->num <= tail->num)
 			p = p->prev;
 		else if (p->num <= pivot->num)
