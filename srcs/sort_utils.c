@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/19 22:54:57 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 14:17:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		ヘッドは設定されてるけどテイルが設定されていない時に起きるバ
 		if (head != guard_node && head->num <= p->num && p->num <= tail->num)
 			p = p->prev;
 		else if (p->num <= pivot->num)

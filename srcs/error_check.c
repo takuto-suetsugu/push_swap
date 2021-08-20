@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/14 12:02:16 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 14:33:19 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	HasSameNumber(int argc, char **argv)
 		j = i + 1;
 		while (argv[j])
 		{
-			cmpResult = ft_strncmp(argv[j], argv[i], ft_strlen(argv[j]));
+			cmpResult = ft_strncmp(argv[j], argv[i], sizeof(argv[j]));
 			if (cmpResult == 0)
 				return (1);
 			j++;

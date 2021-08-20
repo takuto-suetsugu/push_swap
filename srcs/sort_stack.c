@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/19 16:46:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 14:59:45 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			RA_RB(guard_A, guard_command);
 			if (sortted_head == guard_A)
 				sortted_head = guard_A->next;
+			sortted_tail = guard_A->next;
 			top_A = guard_A->prev;
 		}
 		pivot_node = guard_A->prev;
@@ -92,14 +93,6 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			else
 				RA_RB(guard_A, guard_command);
 			top_A = guard_A->prev;
-		printf("A\n");
-		PrintNumber(guard_A);
-		printf("\nB\n");
-		PrintNumber(guard_B);
-		printf("\n\n");
-		printf("head: %ld\n", sortted_head->num);
-		printf("tail: %ld\n", sortted_tail->num);
-		printf("pivot: %ld\n", pivot_node->num);
 		}
 		if (sortted_tail != guard_A)
 		{
@@ -109,14 +102,17 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		while (CountNode(guard_B) > 6)
 		{
 			top_B = guard_B->prev;
-			while (IsMinNode(top_B, guard_B))
+			while (IsMinNode(top_B, guard_B) && CountNode(guard_B))
 			{
 				PA_PB(guard_B, guard_A, guard_command);
 				RA_RB(guard_A, guard_command);
+				if (sortted_head == guard_A)
+					sortted_head = guard_A->next;
+				sortted_tail = guard_A->next;
 				top_B = guard_B->prev;
 			}
 			pivot_node = guard_B->next;
-			while (top_B != pivot_node)
+			while (top_B != pivot_node && CountNode(guard_B))
 			{
 				if (top_B->num > pivot_node->num)
 					PA_PB(guard_B, guard_A, guard_command);
@@ -131,12 +127,12 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			Sort6Stack(guard_B, guard_A, guard_command);
 		if (sortted_head == guard_A)
 			sortted_head = guard_B->prev;
-		sortted_tail = guard_B->next;
 		while (CountNode(guard_B))
 		{
 			PA_PB(guard_B, guard_A, guard_command);
 			RA_RB(guard_A, guard_command);
 		}
+		sortted_tail = guard_A->next;
 	}
 }
 

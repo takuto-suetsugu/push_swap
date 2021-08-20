@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_control.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 13:41:11 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/19 16:30:19 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/20 15:01:55 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	RotateNode(t_node *guard_node)
 	t_node	*second_node;
 	t_node	*last_node;
 
+	if (CountNode(guard_node) <= 1)
+		return ;	
 	first_node = guard_node->prev;
 	second_node = first_node->prev;
 	last_node = guard_node->next;
@@ -93,6 +95,8 @@ void	ReverseRotateNode(t_node *guard_node)
 	t_node	*last_node;
 	t_node	*second_last_node;
 
+	if (CountNode(guard_node) <= 1)
+		return ;
 	first_node = guard_node->prev;
 	last_node = guard_node->next;
 	second_last_node = last_node->next;
