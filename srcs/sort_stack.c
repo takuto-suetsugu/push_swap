@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 19:29:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/21 10:31:51 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			sorted_tail = guard_A->next;
 			top_A = guard_A->prev;
 		}
-		while (!(IsClassified(guard_A, pivot_node, sorted_head, sorted_tail)))
+		while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
 		{
 			if (top_A->num <= pivot_node->num)
 				PA_PB(guard_A, guard_B, guard_command);
@@ -108,8 +108,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 				sorted_tail = guard_A->next;
 				top_B = guard_B->prev;
 			}
-			pivot_node = guard_B->next;
-			while (top_B != pivot_node && CountNode(guard_B))
+			pivot_node = SearchMedian(guard_B, guard_B);
+			while (HasBigNode(guard_B, pivot_node) && CountNode(guard_B))
 			{
 				if (top_B->num > pivot_node->num)
 					PA_PB(guard_B, guard_A, guard_command);
@@ -118,6 +118,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 				top_B = guard_B->prev;
 			}
 		}
+
+		//6個以下のノードをソート
 		if (CountNode(guard_B) == 2)
 			Sort2Stack(guard_B, guard_command);
 		else if (CountNode(guard_B) >= 3)

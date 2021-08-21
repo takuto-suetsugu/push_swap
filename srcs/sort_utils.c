@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 19:26:29 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/21 10:31:33 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	IsMinExcludeSorted(t_node *guard_A, t_node *guard_B,
 {
 	t_node	*top_A;
 	t_node	*p;
-	
+
 	top_A = guard_A->prev;
 	p = guard_A->prev;
 	if (head != guard_A && head->num <= p->num && p->num <= tail->num)
@@ -99,7 +99,7 @@ int IsMaxNode(t_node *top, t_node *guard_node)
 	return (1);
 }
 
-int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
+int	HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 {
 	t_node	*p;
 
@@ -109,11 +109,26 @@ int	IsClassified(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 		if (head != guard_node && head->num <= p->num && p->num <= tail->num)
 			p = p->prev;
 		else if (p->num <= pivot->num)
-			return (0);
+			return (1);
 		else
 			p = p->prev;
 	}
-	return (1);
+	return (0);
+}
+
+int	HasBigNode(t_node *guard_node, t_node *pivot)
+{
+	t_node	*p;
+
+	p = guard_node->prev;
+	while (p != guard_node)
+	{
+		if (p->num > pivot->num)
+			return (1);
+		else
+			p = p->prev;
+	}
+	return (0);
 }
 
 void	OptimizeRotate(t_node *guard_src, t_command *guard_command)
@@ -157,7 +172,6 @@ t_node	*SearchMedian(t_node *guard_node, t_node *head)
 		p = p->prev;
 		remain_count++;
 	}
-	p = guard_node->prev;
 	check_node = guard_node;
 	while (over_count != remain_count/2)
 	{
