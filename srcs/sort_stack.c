@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/21 10:31:51 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/21 14:04:02 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 	{
 		top_A = guard_A->prev;
 		//pivotより小さい→PB
-		while (IsMinExcludeSorted(guard_A, guard_B, sorted_head, sorted_tail))
+		while (IsMinExcludeSorted(top_A, guard_A, sorted_head)
+		|| IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
 		{
+			if (IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
+				SA_SB(guard_A, guard_command);
 			RA_RB(guard_A, guard_command);
 			if (sorted_head == guard_A)
 				sorted_head = guard_A->next;
@@ -99,8 +102,11 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		while (CountNode(guard_B) >= 6)
 		{
 			top_B = guard_B->prev;
-			while (IsMinNode(top_B, guard_B) && CountNode(guard_B))
+			while ((IsMinNode(top_B, guard_B) && CountNode(guard_B))
+			|| (IsMinNode(top_B->prev, guard_B) && CountNode(guard_B)))
 			{
+				if (!IsMinNode(top_B, guard_B) && IsMinNode(top_B->prev, guard_B))
+					SA_SB(guard_B, guard_command);
 				PA_PB(guard_B, guard_A, guard_command);
 				RA_RB(guard_A, guard_command);
 				if (sorted_head == guard_A)

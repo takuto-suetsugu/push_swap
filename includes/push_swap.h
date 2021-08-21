@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/21 10:23:40 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/21 13:31:56 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ int		IsDescending(t_node *guard_node);
 int		CountNode(t_node *guard_node);
 int 	IsMaxNode(t_node *top, t_node *guard_node);
 int 	IsMinNode(t_node *top, t_node *guard_node);
-int	IsMinExcludeSorted(t_node *guard_A, t_node *guard_B,
-					t_node *head, t_node *tail);
+int		IsMinExcludeSorted(t_node *check_node, t_node *guard_node, t_node *head);
 int		HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail);
-int	HasBigNode(t_node *guard_node, t_node *pivot);
+int		HasBigNode(t_node *guard_node, t_node *pivot);
 void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
 void	OptimizeRotate(t_node *guard_src, t_command *guard_command);
 t_node	*SearchMedian(t_node *guard_node, t_node *head);

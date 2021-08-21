@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:03:12 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/21 10:31:33 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/21 13:38:28 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,16 @@ int IsMinNode(t_node *top, t_node *guard_node)
 	return (1);
 }
 
-int	IsMinExcludeSorted(t_node *guard_A, t_node *guard_B,
-					t_node *head, t_node *tail)
+int	IsMinExcludeSorted(t_node *check_node, t_node *guard_node, t_node *head)
 {
-	t_node	*top_A;
 	t_node	*p;
 
-	top_A = guard_A->prev;
-	p = guard_A->prev;
-	if (head != guard_A && head->num <= p->num && p->num <= tail->num)
+	p = guard_node->prev;
+	if (check_node == head || check_node == head->prev)
 		return (0);
-	while (p != guard_A)
+	while (p != guard_node && p != head)
 	{
-		if (head != guard_A && head->num <= p->num && p->num <= tail->num)
-			p = p->prev;
-		else if (p->num < top_A->num)
-			return (0);
-		else
-			p = p->prev;
-	}
-	p = guard_B->prev;
-	while (p != guard_B)
-	{
-		if (p->num < top_A->num)
+		if (p->num < check_node->num)
 			return (0);
 		else
 			p = p->prev;
