@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/21 14:04:02 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2021/08/22 13:57:08 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			RRA_RRB(guard_A, guard_command);
 
 		//pivotより大きい→PA、Bが６以下になるようにする
-		while (CountNode(guard_B) >= 6)
+		while (CountNode(guard_B) >= 5)
 		{
 			top_B = guard_B->prev;
 			while ((IsMinNode(top_B, guard_B) && CountNode(guard_B))
