@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/20 12:42:38 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/20 13:06:30 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			while ((IsMinNode(top_B, guard_B)
 					|| (IsMinNode(top_B->prev, guard_B))) && CountNode(guard_B))
 			{
-				if (!IsMinNode(top_B, guard_B) && IsMinNode(top_B->prev, guard_B))
+				if (!IsMinNode(top_B, guard_B)
+					&& IsMinNode(top_B->prev, guard_B))
 					SA_SB(guard_B, guard_command);
 				PA_PB(guard_B, guard_A, guard_command);
 				RA_RB(guard_A, guard_command);
