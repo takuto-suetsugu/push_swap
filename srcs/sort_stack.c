@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/22 13:57:08 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/18 10:55:59 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		}
 		while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
 		{
-			if (top_A->num <= pivot_node->num)
+			if (top_A->num <= pivot_node->num
+			
+			)
 				PA_PB(guard_A, guard_B, guard_command);
 			else
 				RA_RB(guard_A, guard_command);
@@ -98,8 +100,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		while (sorted_tail != guard_A && sorted_tail != guard_A->next)
 			RRA_RRB(guard_A, guard_command);
 
-		//pivotより大きい→PA、Bが６以下になるようにする
-		while (CountNode(guard_B) >= 5)
+		//pivotより大きい→PA、Bが5以下になるようにする
+		while (CountNode(guard_B) > 5)
 		{
 			top_B = guard_B->prev;
 			while ((IsMinNode(top_B, guard_B) && CountNode(guard_B))
