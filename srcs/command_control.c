@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   command_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:38:02 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/19 16:32:30 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/20 12:06:54 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	PrintCommand(t_command *guard_command)
-{
-	t_command	*p;
-
-	p = guard_command->next;
-	while (p != guard_command)
-	{
-		write(1, p->command, ft_strlen(p->command));
-		write(1, "\n", 1);
-		p = p->next;
-	}
-}
 
 void	AddCommand(t_command *guard_command, char *type)
 {

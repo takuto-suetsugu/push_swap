@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/20 14:25:53 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/20 12:17:19 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,4 @@ int	main(int argc, char **argv)
 	SortProcess(&guard_A, &guard_B, &guard_command);
 	PrintCommand(&guard_command);
 	return (0);
-}
-
-void	PrintNumber(t_node *guard)
-{
-	t_node	*p;
-
-	p = guard->prev;
-	while (p != guard)
-	{
-		printf("%ld, ", p->num);
-		p = p->prev;
-	}
 }

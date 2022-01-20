@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/18 10:55:59 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/20 12:42:38 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 	while (!(IsAscending(guard_A)))
 	{
 		top_A = guard_A->prev;
-		//pivotより小さい→PB
 		while (IsMinExcludeSorted(top_A, guard_A, sorted_head)
-		|| IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
+			|| IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
 		{
 			if (IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
 				SA_SB(guard_A, guard_command);
@@ -89,9 +88,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		}
 		while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
 		{
-			if (top_A->num <= pivot_node->num
-			
-			)
+			if (top_A->num <= pivot_node->num)
 				PA_PB(guard_A, guard_B, guard_command);
 			else
 				RA_RB(guard_A, guard_command);
@@ -99,13 +96,11 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		}
 		while (sorted_tail != guard_A && sorted_tail != guard_A->next)
 			RRA_RRB(guard_A, guard_command);
-
-		//pivotより大きい→PA、Bが5以下になるようにする
 		while (CountNode(guard_B) > 5)
 		{
 			top_B = guard_B->prev;
-			while ((IsMinNode(top_B, guard_B) && CountNode(guard_B))
-			|| (IsMinNode(top_B->prev, guard_B) && CountNode(guard_B)))
+			while ((IsMinNode(top_B, guard_B)
+					|| (IsMinNode(top_B->prev, guard_B))) && CountNode(guard_B))
 			{
 				if (!IsMinNode(top_B, guard_B) && IsMinNode(top_B->prev, guard_B))
 					SA_SB(guard_B, guard_command);
@@ -126,8 +121,6 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 				top_B = guard_B->prev;
 			}
 		}
-
-		//6個以下のノードをソート
 		if (CountNode(guard_B) == 2)
 			Sort2Stack(guard_B, guard_command);
 		else if (CountNode(guard_B) >= 3)
