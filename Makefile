@@ -6,7 +6,7 @@
 #    By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/05 14:30:56 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/01/27 15:39:06 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/01/27 15:45:01 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= push_swap
 SRCS	= srcs/push_swap.c srcs/error_check.c srcs/node_control.c \
 			srcs/command_control.c srcs/sort_stack.c srcs/sort_utils.c \
 			srcs/command_control_2.c srcs/node_control_2.c srcs/sort_utils_2.c \
-			srcs/sort_large_utils.c
+			srcs/sort_large_utils.c srcs/sort_large_utils_2.c
 
 OBJ		= *.o
 

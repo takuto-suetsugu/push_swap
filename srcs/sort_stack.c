@@ -6,11 +6,28 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 15:36:38 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:55:56 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+
+t_node	*MoveAtoBProc(t_node *guard_A, t_node *guard_B, t_node *pivot_node,
+		t_node *sorted_head, t_command *guard_command)
+{
+	t_node	*sorted_tail;
+
+	sorted_tail = guard_A;
+	sorted_head = RAIfMin(guard_A, sorted_head, guard_command);
+	if (sorted_head != guard_A)
+		sorted_tail = guard_A->next;
+	while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
+		PBSmallThanPivot(pivot_node, guard_A, guard_B, guard_command);
+	OptimizeRotateTailBottom(sorted_tail, guard_A, guard_command);
+	return (sorted_head);
+}
+
 
 static void	Sort2Stack(t_node *guard_node, t_command *guard_command)
 {
@@ -72,12 +89,8 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 	pivot_node = SearchMedian(guard_A, sorted_head);
 	while (!(IsAscending(guard_A)))
 	{
-		sorted_head = RAIfMin(guard_A, sorted_head, guard_command);
-		if (sorted_head != guard_A)
-			sorted_tail = guard_A->next;
-		while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
-			PBSmallThanPivot(pivot_node, guard_A, guard_B, guard_command);
-		OptimizeRotateTailBottom(sorted_tail, guard_A, guard_command);
+		sorted_head = MoveAtoBProc(guard_A, guard_B, pivot_node,
+			sorted_head, guard_command);
 		while (CountNode(guard_B) >= 7)
 		{
 			sorted_head = RBIfMin(guard_B, guard_A, sorted_head, guard_command);
