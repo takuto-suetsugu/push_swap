@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:37:48 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 12:42:18 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:26:44 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	HasBigNode(t_node *guard_node, t_node *pivot)
 	return (0);
 }
 
-void	OptimizeRotate(t_node *guard_src, t_command *guard_command)
+void	OptimizeRotateMinTop(t_node *guard_src, t_command *guard_command)
 {
 	t_node	*min_src;
 	int		min_distance_from_top;

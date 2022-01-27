@@ -6,15 +6,90 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 12:43:19 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:16:09 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_node	*RotateIfSmallest(t_node *top, t_node *guard, t_node *sorted_head,
+void	OptimizeRotateTailBottom(t_node *tail, t_node *guard,
 		t_command *guard_command)
 {
+	int		tail_distance_from_top;
+	t_node	*tmp;
+
+	if (tail == guard || tail == guard->next)
+		return ;
+	tmp = tail;
+	tail_distance_from_top = 0;
+	while (tmp != guard)
+	{
+		tmp = tmp->next;
+		tail_distance_from_top++;
+	}
+	if (tail_distance_from_top <= CountNode(guard) / 2)
+	{
+		while (tail != guard->next)
+			RA_RB(guard, guard_command);
+	}
+	else
+	{
+		while (tail != guard->next)
+			RRA_RRB(guard, guard_command);
+	}
+}
+
+void	MoveBigThanPivot(t_node *pivot_node, t_node *guard,
+		t_node *guard_dst, t_command *guard_command)
+{
+	t_node	*top;
+
+	top = guard->prev;
+	if (top->num > pivot_node->num)
+		PA_PB(guard, guard_dst, guard_command);
+	else
+		RA_RB(guard, guard_command);
+	top = guard->prev;
+}
+
+void	MoveSmallThanPivot(t_node *pivot_node, t_node *guard,
+		t_node *guard_dst, t_command *guard_command)
+{
+	t_node	*top;
+
+	top = guard->prev;
+	if (top->num <= pivot_node->num)
+		PA_PB(guard, guard_dst, guard_command);
+	else
+		RA_RB(guard, guard_command);
+	top = guard->prev;
+}
+
+t_node	*RotateIfSmallestB(t_node *guard, t_node *guard_dst, t_node *sorted_head,
+		t_command *guard_command)
+{
+	t_node	*top;
+
+	top = guard->prev;
+	while ((IsMinNode(top, guard) || IsMinNode(top->prev, guard)) && CountNode(guard))
+	{
+		if (!IsMinNode(top, guard) && IsMinNode(top->prev, guard))
+			SA_SB(guard, guard_command);
+		PA_PB(guard, guard_dst, guard_command);
+		RA_RB(guard_dst, guard_command);
+		if (sorted_head == guard_dst)
+			sorted_head = guard_dst->next;
+		top = guard->prev;
+	}
+	return (sorted_head);
+}
+
+t_node	*RotateIfSmallestA(t_node *guard, t_node *sorted_head,
+		t_command *guard_command)
+{
+	t_node	*top;
+
+	top = guard->prev;
 	while (IsMinExcludeSorted(top, guard, sorted_head)
 			|| IsMinExcludeSorted(top->prev, guard, sorted_head))
 	{
@@ -63,6 +138,8 @@ static void	Sort6Stack(t_node *guard_src, t_node *guard_dst,
 {
 	t_node	*dst_top;
 
+	if (CountNode(guard_src) == 2)
+		Sort2Stack(guard_src, guard_command);
 	if (IsAscending(guard_src))
 		return ;
 	dst_top = guard_dst->prev;
@@ -71,71 +148,35 @@ static void	Sort6Stack(t_node *guard_src, t_node *guard_dst,
 	Sort3Stack(guard_src, guard_command);
 	while (guard_dst->prev != dst_top)
 		InsertNode(guard_dst, guard_src, guard_command);
-	OptimizeRotate(guard_src, guard_command);
+	OptimizeRotateMinTop(guard_src, guard_command);
 }
 
 static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 							t_command *guard_command)
 {
-	t_node	*top_A;
-	t_node	*top_B;
 	t_node	*sorted_head;
 	t_node	*sorted_tail;
 	t_node	*pivot_node;
 
 	sorted_head = guard_A;
 	sorted_tail = guard_A;
-	top_A = guard_A->prev;
-	top_B = guard_B->prev;
 	pivot_node = SearchMedian(guard_A, sorted_head);
 	while (!(IsAscending(guard_A)))
 	{
-		top_A = guard_A->prev;
-		sorted_head = RotateIfSmallest(top_A, guard_A, sorted_head, guard_command);
-		
+		sorted_head = RotateIfSmallestA(guard_A, sorted_head, guard_command);
 		if (sorted_head != guard_A)
 			sorted_tail = guard_A->next;
-		top_A = guard_A->prev;
 		while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
+			MoveSmallThanPivot(pivot_node, guard_A, guard_B, guard_command);
+		OptimizeRotateTailBottom(sorted_tail, guard_A, guard_command);
+		while (CountNode(guard_B) >= 7)
 		{
-			if (top_A->num <= pivot_node->num)
-				PA_PB(guard_A, guard_B, guard_command);
-			else
-				RA_RB(guard_A, guard_command);
-			top_A = guard_A->prev;
-		}
-		while (sorted_tail != guard_A && sorted_tail != guard_A->next)
-			RRA_RRB(guard_A, guard_command);
-		while (CountNode(guard_B) > 5)
-		{
-			top_B = guard_B->prev;
-			while ((IsMinNode(top_B, guard_B)
-					|| (IsMinNode(top_B->prev, guard_B))) && CountNode(guard_B))
-			{
-				if (!IsMinNode(top_B, guard_B)
-					&& IsMinNode(top_B->prev, guard_B))
-					SA_SB(guard_B, guard_command);
-				PA_PB(guard_B, guard_A, guard_command);
-				RA_RB(guard_A, guard_command);
-				if (sorted_head == guard_A)
-					sorted_head = guard_A->next;
-				sorted_tail = guard_A->next;
-				top_B = guard_B->prev;
-			}
+			sorted_head = RotateIfSmallestB(guard_B, guard_A, sorted_head, guard_command);
 			pivot_node = SearchMedian(guard_B, guard_B);
 			while (HasBigNode(guard_B, pivot_node) && CountNode(guard_B))
-			{
-				if (top_B->num > pivot_node->num)
-					PA_PB(guard_B, guard_A, guard_command);
-				else
-					RA_RB(guard_B, guard_command);
-				top_B = guard_B->prev;
-			}
+				MoveBigThanPivot(pivot_node, guard_B, guard_A, guard_command);
 		}
-		if (CountNode(guard_B) == 2)
-			Sort2Stack(guard_B, guard_command);
-		else if (CountNode(guard_B) >= 3)
-			Sort6Stack(guard_B, guard_A, guard_command);
+		Sort6Stack(guard_B, guard_A, guard_command);
 		if (sorted_head == guard_A)
 			sorted_head = guard_B->prev;
 		while (CountNode(guard_B))
@@ -143,7 +184,6 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 			PA_PB(guard_B, guard_A, guard_command);
 			RA_RB(guard_A, guard_command);
 		}
-		sorted_tail = guard_A->next;
 		pivot_node = guard_A->prev;
 	}
 }
