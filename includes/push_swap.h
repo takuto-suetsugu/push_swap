@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 13:26:44 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:38:15 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		main(int argc, char **argv);
 int		HasNonInteger(int argc, char **argv);
 int		HasSameNumber(int argc, char **argv);
 
-void	SortProcess(t_node *guard_A, t_node *guard_B, t_command *guard_command);
+void	SortProcess(t_node *guard_A, t_node *guard_B,
+		t_command *guard_command);
 
 void	CreateNode(long node_n, t_node *guard_node);
 void	AddNode(t_node *add_node, t_node *guard_node);
@@ -62,6 +63,19 @@ int		HasBigNode(t_node *guard_node, t_node *pivot);
 void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
 void	OptimizeRotateMinTop(t_node *guard_src, t_command *guard_command);
 t_node	*SearchMedian(t_node *guard_node, t_node *head);
+
+
+t_node	*PASorted(t_node *sorted_head, t_node *guard_A, t_node *guard_B,
+		t_command *guard_command);
+void	OptimizeRotateTailBottom(t_node *tail, t_node *guard,
+		t_command *guard_command);
+void	PABigThanPivot(t_node *pivot_node, t_node *guard,
+		t_node *guard_dst, t_command *guard_command);
+void	PBSmallThanPivot(t_node *pivot_node, t_node *guard,
+		t_node *guard_dst, t_command *guard_command);
+t_node	*RBIfMin(t_node *guard, t_node *guard_dst,
+		t_node *sorted_head, t_command *guard_command);
+t_node	*RAIfMin(t_node *guard, t_node *sorted_head, t_command *guard_command);
 
 void	PrintNumber(t_node *guard);
 
