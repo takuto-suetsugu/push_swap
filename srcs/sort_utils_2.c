@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:37:48 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/20 12:42:06 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:42:18 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		if (head != guard_node && head->num <= p->num && p->num <= tail->num)
-			p = p->prev;
+		if (head != guard_node && p == head)
+			p = tail->prev;
 		else if (p->num <= pivot->num)
 			return (1);
 		else

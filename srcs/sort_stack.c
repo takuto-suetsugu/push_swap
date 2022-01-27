@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/20 13:06:30 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:43:19 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_node	*RotateIfSmallest(t_node *top, t_node *guard, t_node *sorted_head,
+		t_command *guard_command)
+{
+	while (IsMinExcludeSorted(top, guard, sorted_head)
+			|| IsMinExcludeSorted(top->prev, guard, sorted_head))
+	{
+		if (IsMinExcludeSorted(top->prev, guard, sorted_head))
+			SA_SB(guard, guard_command);
+		RA_RB(guard, guard_command);
+		if (sorted_head == guard)
+			sorted_head = guard->next;
+		top = guard->prev;
+	}
+	return (sorted_head);
+}
 
 static void	Sort2Stack(t_node *guard_node, t_command *guard_command)
 {
@@ -61,11 +77,11 @@ static void	Sort6Stack(t_node *guard_src, t_node *guard_dst,
 static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 							t_command *guard_command)
 {
-	t_node	*pivot_node;
 	t_node	*top_A;
 	t_node	*top_B;
 	t_node	*sorted_head;
 	t_node	*sorted_tail;
+	t_node	*pivot_node;
 
 	sorted_head = guard_A;
 	sorted_tail = guard_A;
@@ -75,17 +91,11 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 	while (!(IsAscending(guard_A)))
 	{
 		top_A = guard_A->prev;
-		while (IsMinExcludeSorted(top_A, guard_A, sorted_head)
-			|| IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
-		{
-			if (IsMinExcludeSorted(top_A->prev, guard_A, sorted_head))
-				SA_SB(guard_A, guard_command);
-			RA_RB(guard_A, guard_command);
-			if (sorted_head == guard_A)
-				sorted_head = guard_A->next;
+		sorted_head = RotateIfSmallest(top_A, guard_A, sorted_head, guard_command);
+		
+		if (sorted_head != guard_A)
 			sorted_tail = guard_A->next;
-			top_A = guard_A->prev;
-		}
+		top_A = guard_A->prev;
 		while (HasSmallNode(guard_A, pivot_node, sorted_head, sorted_tail))
 		{
 			if (top_A->num <= pivot_node->num)
