@@ -6,23 +6,23 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:07:03 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:09:44 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../libft/libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-typedef struct	s_node
+# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+typedef struct  s_node
 {
 	long			num;
 	struct s_node*	next;
 	struct s_node*	prev;
 }				t_node;
-typedef struct	s_command
+typedef struct  s_command
 {
 	char				command[4];
 	struct s_command*	next;
