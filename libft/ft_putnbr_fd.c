@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:01:30 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/11/30 22:02:23 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:15:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		check_minus(int n)
+int	check_minus(int n)
 {
 	if (n < 0)
 		return (-1);
@@ -20,7 +20,7 @@ int		check_minus(int n)
 		return (0);
 }
 
-int		ft_to_plus(int n)
+int	ft_to_plus(int n)
 {
 	if (n < 0)
 		return (-n);
