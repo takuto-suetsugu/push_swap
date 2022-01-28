@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:10:26 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:11:57 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include <unistd.h>
-# include <stdlib.h>
+# include	<unistd.h>
+# include	<stdlib.h>
 typedef struct s_node
 {
 	long			num;
