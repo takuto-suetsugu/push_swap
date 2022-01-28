@@ -6,17 +6,16 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 10:56:41 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:57:39 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../libft/libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include	"../libft/libft.h"
+#include	<unistd.h>
+#include	<stdlib.h>
 typedef struct  s_node
 {
 	long			num;
