@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 10:33:24 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:38:42 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B, t_command *guard_co
 		{
 			sorted_head = RBIfMin(guard_B, guard_A, sorted_head, guard_command);
 			pivot_node = SearchMedian(guard_B, guard_B);
-			while (HasBigNode(guard_B, pivot_node) && CountNode(guard_B))
-				PABigThanPivot(pivot_node, guard_B, guard_A, guard_command);
+			PABigThanPivot(pivot_node, guard_B, guard_A, guard_command);
 		}
 		Sort6Stack(guard_B, guard_A, guard_command);
 		sorted_head = PASorted(sorted_head, guard_A, guard_B, guard_command);

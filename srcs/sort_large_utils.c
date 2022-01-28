@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:36:07 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 15:45:52 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:38:51 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@ void	PABigThanPivot(t_node *pivot_node, t_node *guard,
 	t_node	*top;
 
 	top = guard->prev;
-	if (top->num > pivot_node->num)
-		PA_PB(guard, guard_dst, guard_command);
-	else
-		RA_RB(guard, guard_command);
-	top = guard->prev;
+    while (HasBigNode(guard, pivot_node) && CountNode(guard))
+    {
+        if (top->num > pivot_node->num)
+            PA_PB(guard, guard_dst, guard_command);
+        else
+            RA_RB(guard, guard_command);
+        top = guard->prev;
+    }
 }
 
 void	PBSmallThanPivot(t_node *pivot_node, t_node *guard,
