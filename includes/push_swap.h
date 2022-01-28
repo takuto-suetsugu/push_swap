@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 10:57:39 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:04:55 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include	"../libft/libft.h"
 #include	<unistd.h>
 #include	<stdlib.h>
-typedef struct  s_node
+typedef	struct	s_node
 {
 	long			num;
 	struct s_node*	next;
 	struct s_node*	prev;
-}               t_node;
-typedef	struct s_command
+}				t_node;
+typedef	struct	s_command
 {
 	char				command[4];
 	struct s_command*	next;
@@ -32,7 +32,7 @@ int		main(int argc, char **argv);
 int		HasNonInteger(int argc, char **argv);
 int		HasSameNumber(int argc, char **argv);
 void	SortProcess(t_node *guard_A, t_node *guard_B,
-						t_command *guard_command);
+					t_command *guard_command);
 void	CreateNode(long node_n, t_node *guard_node);
 void	AddNode(t_node *add_node, t_node *guard_node);
 void	DeleteNode(t_node *guard_node);
@@ -40,20 +40,23 @@ void	SwapNode(t_node *guard_node);
 void	RotateNode(t_node *guard_node);
 void	ReverseRotateNode(t_node *guard_node);
 void	PrintCommand(t_command *guard_command);
-void    AddCommand(t_command *guard_command, char *type);
-void    SA_SB(t_node *guard_node, t_command *guard_command);
+void	AddCommand(t_command *guard_command, char *type);
+void	SA_SB(t_node *guard_node, t_command *guard_command);
 void	RA_RB(t_node *guard_node, t_command *guard_command);
 void	RRA_RRB(t_node *guard_node, t_command *guard_command);
 void	PA_PB(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
 int		IsAscending(t_node *guard_node);
 int		IsDescending(t_node *guard_node);
 int		CountNode(t_node *guard_node);
-int 	IsMaxNode(t_node *top, t_node *guard_node);
-int 	IsMinNode(t_node *top, t_node *guard_node);
-int		IsMinExcludeSorted(t_node *check_node, t_node *guard_node, t_node *head);
-int		HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail);
+int		IsMaxNode(t_node *top, t_node *guard_node);
+int		IsMinNode(t_node *top, t_node *guard_node);
+int		IsMinExcludeSorted(t_node *check_node, t_node *guard_node,
+							t_node *head);
+int		HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head,
+						t_node *tail);
 int		HasBigNode(t_node *guard_node, t_node *pivot);
-void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
+void	InsertNode(t_node *guard_src, t_node *guard_dst,
+					t_command *guard_command);
 void	OptimizeRotateMinTop(t_node *guard_src, t_command *guard_command);
 t_node	*SearchMedian(t_node *guard_node);
 t_node	*PASorted(t_node *sorted_head, t_node *guard_A, t_node *guard_B,
