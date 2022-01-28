@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:13:54 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/11/30 22:14:13 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:51:48 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	size_t	i;
 
-	if (!(str = ft_strdup(s)))
+	str = ft_strdup(s);
+	if (!(str))
 		return (NULL);
 	i = 0;
 	while (str[i])

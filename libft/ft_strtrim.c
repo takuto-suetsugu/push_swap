@@ -6,62 +6,40 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:14:44 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:25:58 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:52:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_check(char word, char const *set)
+static int	in(char const s1, char const *set)
 {
-	size_t	j;
+	int	i;
 
-	j = 0;
-	while (set[j])
+	i = 0;
+	while (set[i] != '\0')
 	{
-		if (word == set[j])
-			return (1);
-		j++;
+		if (set[i] == s1)
+			return (0);
+		i++;
 	}
-	return (0);
-}
-
-unsigned int	ft_len(char const *s1, char *end, char *start)
-{
-	unsigned int	len_s1;
-
-	len_s1 = 0;
-	if (!*s1 || end == start)
-		len_s1 = 1;
-	else
-		len_s1 = end - start + 2;
-	return (len_s1);
+	return (1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int				i;
-	unsigned int	len_s1;
-	char			*start;
-	char			*end;
-	char			*trimmed_s1;
+	size_t	len;
+	int		start;
 
-	if (!s1 && !set)
+	if (!s1 || !set)
 		return (NULL);
-	i = 0;
-	while (s1[i] && ft_check(s1[i], set))
-		i++;
-	start = (char *)&s1[i];
-	if (ft_strlen(s1))
-	{
-		i = ft_strlen(s1) - 1;
-		while (i >= 0 && ft_check(s1[i], set))
-			i--;
-	}
-	end = (char *)&s1[i];
-	len_s1 = ft_len(s1, end, start);
-	if (!(trimmed_s1 = malloc(sizeof(char) * len_s1)))
-		return (NULL);
-	ft_strlcpy(trimmed_s1, start, len_s1);
-	return (trimmed_s1);
+	start = 0;
+	len = ft_strlen(s1);
+	while (in(s1[start], set) == 0)
+		start++;
+	while (in(s1[len - 1], set) == 0)
+		len--;
+	if (len == 0)
+		return (ft_substr(s1, ft_strlen(s1), ft_strlen(s1)));
+	return (ft_substr(s1, start, len - start));
 }

@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:26:38 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:19:26 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:49:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ char	**ft_split(char const *s, char c)
 	char	**split_s;
 	size_t	c_count;
 
-	if ((c_count = ft_count_c(s, c)) < 0)
+	c_count = ft_count_c(s, c);
+	if (c_count < 0)
 		return (NULL);
 	split_s = (char **)malloc(sizeof(s) * (c_count + 2));
 	if (!split_s)
