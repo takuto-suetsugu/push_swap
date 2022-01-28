@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:36:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:28:17 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:29:39 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ long	ft_atoi(const char *str)
 	minus = 1;
 	res = 0;
 	while (*str && (*str == ' ' || *str == '\n' || *str == '\t'
-		|| *str == '\v' || *str == '\f' || *str == '\r'))
+			|| *str == '\v' || *str == '\f' || *str == '\r'))
 		++str;
 	if (*str == '-')
 		minus = -1;
