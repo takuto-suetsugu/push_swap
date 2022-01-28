@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_control_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:12:42 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 18:23:59 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 19:11:10 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_cmd)
 
 void	FreeNode(t_node *guard_node)
 {
-	t_node *p;
+	t_node	*p;
 
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		free(p);
 		p = p->prev;
+		free(p->next);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 18:19:06 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:05:05 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,4 @@ void	SortProcess(t_node *guard_A, t_node *guard_B, t_command *guard_command)
 		Sort6Stack(guard_A, guard_B, guard_command);
 	else if (node_count_A > 6)
 		SortLargeStack(guard_A, guard_B, guard_command);
-	//FreeNode(guard_A);
 }
