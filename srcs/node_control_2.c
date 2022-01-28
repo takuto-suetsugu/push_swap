@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:12:42 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/20 12:16:42 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:13:13 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,16 @@ void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_cmd)
 		}
 	}
 	PA_PB(guard_src, guard_dst, guard_cmd);
+}
+
+void	FreeNode(t_node *guard_node)
+{
+	t_node *p;
+
+	p = guard_node->prev;
+	while (p != guard_node)
+	{
+		free(p);
+		p = p->prev;
+	}
 }

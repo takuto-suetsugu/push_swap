@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:35:27 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/20 12:17:19 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:13:25 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int	main(int argc, char **argv)
 	CreateStackA(argc, argv, &guard_A);
 	SortProcess(&guard_A, &guard_B, &guard_command);
 	PrintCommand(&guard_command);
+	FreeNode(&guard_A);
 	return (0);
 }

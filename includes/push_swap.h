@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:12:39 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:09:48 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	CreateNode(long node_n, t_node *guard_node);
 void	AddNode(t_node *add_node, t_node *guard_node);
 void	DeleteNode(t_node *guard_node);
 void	SwapNode(t_node *guard_node);
+void	FreeNode(t_node *guard_node);
 void	RotateNode(t_node *guard_node);
 void	ReverseRotateNode(t_node *guard_node);
 void	PrintCommand(t_command *guard_command);

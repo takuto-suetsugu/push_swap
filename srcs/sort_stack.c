@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 10:45:07 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:10:36 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,7 @@ void	SortProcess(t_node *guard_A, t_node *guard_B, t_command *guard_command)
 	int	node_count_A;
 
 	node_count_A = CountNode(guard_A);
-	if (node_count_A <= 1 || IsAscending(guard_A))
-		AddCommand(guard_command, "\0");
-	else if (node_count_A == 2)
+	if (node_count_A == 2)
 		Sort2Stack(guard_A, guard_command);
 	else if (node_count_A <= 6)
 		Sort6Stack(guard_A, guard_B, guard_command);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:33:25 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:25:06 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:38:27 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr_s1;
-	unsigned char	*ptr_s2;
-	unsigned int	i;
+	size_t			cnt;
+	unsigned int	diff;
 
-	if (n == 0)
-		return (0);
-	ptr_s1 = (unsigned char *)s1;
-	ptr_s2 = (unsigned char *)s2;
-	i = 0;
-	while ((i < n - 1) && ptr_s1[i] && ptr_s2[i] && (ptr_s1[i] == ptr_s2[i]))
-		i++;
-	return ((unsigned char)ptr_s1[i] - (unsigned char)ptr_s2[i]);
+	cnt = 0;
+	diff = 0;
+	while ((cnt < n) && !diff && (s1[cnt] != 0) && (s2[cnt] != 0))
+	{
+		diff = (unsigned char)s1[cnt] - (unsigned char)s2[cnt];
+		cnt++;
+	}
+	if (cnt < n && !diff && (s1[cnt] == 0 || s2[cnt] == 0))
+		diff = (unsigned char)s1[cnt] - (unsigned char)s2[cnt];
+	return (diff);
 }
