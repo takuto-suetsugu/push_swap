@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:14:44 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/11/30 23:48:01 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:25:58 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned int	ft_check(char word, char const *set)
 {
-	size_t j;
+	size_t	j;
 
 	j = 0;
 	while (set[j])
@@ -28,7 +28,7 @@ unsigned int	ft_check(char word, char const *set)
 
 unsigned int	ft_len(char const *s1, char *end, char *start)
 {
-	unsigned int len_s1;
+	unsigned int	len_s1;
 
 	len_s1 = 0;
 	if (!*s1 || end == start)
@@ -38,7 +38,7 @@ unsigned int	ft_len(char const *s1, char *end, char *start)
 	return (len_s1);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int				i;
 	unsigned int	len_s1;

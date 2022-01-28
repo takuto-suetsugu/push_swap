@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:59:45 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/11/30 22:00:58 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:26:14 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char *ptr_dst;
-	char *ptr_src;
+	char	*ptr_dst;
+	char	*ptr_src;
 
 	if (dst == src || len == 0)
 		return (dst);
