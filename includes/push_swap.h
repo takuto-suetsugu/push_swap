@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:38:15 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 15:38:15 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:45:32 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
 int		HasBigNode(t_node *guard_node, t_node *pivot);
 void	InsertNode(t_node *guard_src, t_node *guard_dst, t_command *guard_command);
 void	OptimizeRotateMinTop(t_node *guard_src, t_command *guard_command);
-t_node	*SearchMedian(t_node *guard_node, t_node *head);
+t_node	*SearchMedian(t_node *guard_node);
 
 
 t_node	*PASorted(t_node *sorted_head, t_node *guard_A, t_node *guard_B,

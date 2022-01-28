@@ -6,7 +6,7 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 10:40:05 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:45:07 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 
 	sorted_head = guard_A;
 	sorted_tail = guard_A;
-	pivot_node = SearchMedian(guard_A, sorted_head);
+	pivot_node = SearchMedian(guard_A);
 	while (!(IsAscending(guard_A)))
 	{
 		sorted_head = RAIfMin(guard_A, sorted_head, guard_command);
@@ -81,7 +81,7 @@ static void	SortLargeStack(t_node *guard_A, t_node *guard_B,
 		while (CountNode(guard_B) >= 7)
 		{
 			sorted_head = RBIfMin(guard_B, guard_A, sorted_head, guard_command);
-			pivot_node = SearchMedian(guard_B, guard_B);
+			pivot_node = SearchMedian(guard_B);
 			PABigThanPivot(pivot_node, guard_B, guard_A, guard_command);
 		}
 		Sort6Stack(guard_B, guard_A, guard_command);

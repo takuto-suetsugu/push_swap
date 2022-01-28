@@ -6,20 +6,21 @@
 /*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:37:48 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/27 13:26:44 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:53:16 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	HasSmallNode(t_node *guard_node, t_node *pivot, t_node *head, t_node *tail)
+int	HasSmallNode(t_node *guard_node, t_node *pivot,
+					t_node *sorted_head, t_node *tail)
 {
 	t_node	*p;
 
 	p = guard_node->prev;
 	while (p != guard_node)
 	{
-		if (head != guard_node && p == head)
+		if (sorted_head != guard_node && p == sorted_head)
 			p = tail->prev;
 		else if (p->num <= pivot->num)
 			return (1);
@@ -70,31 +71,26 @@ void	OptimizeRotateMinTop(t_node *guard_src, t_command *guard_command)
 	}
 }
 
-t_node	*SearchMedian(t_node *guard_node, t_node *head)
+t_node	*SearchMedian(t_node *guard_node)
 {
 	t_node	*check_node;
 	t_node	*p;
-	int		over_count;
-	int		remain_count;
+	int		above_average_count;
+	int		node_count;
 
 	p = guard_node->prev;
-	over_count = -2;
-	remain_count = 0;
-	while (p != head)
-	{
-		p = p->prev;
-		remain_count++;
-	}
+	above_average_count = 0;
+	node_count = CountNode(guard_node);
 	check_node = guard_node;
-	while (over_count != remain_count / 2)
+	while (above_average_count != node_count / 2)
 	{
 		check_node = check_node->prev;
 		p = guard_node->prev;
-		over_count = 0;
-		while (p != guard_node && p != head)
+		above_average_count = 0;
+		while (p != guard_node && p != guard_node)
 		{
 			if (check_node->num < p->num)
-				over_count++;
+				above_average_count++;
 			p = p->prev;
 		}
 	}
