@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:26:38 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/12/01 01:23:26 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:19:26 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_count_c(char const *s, char c)
 {
-	size_t i;
-	size_t c_count;
+	size_t	i;
+	size_t	c_count;
 
 	i = 0;
 	c_count = 0;
@@ -31,8 +31,7 @@ size_t	ft_count_c(char const *s, char c)
 void	*ft_sp_range(char **split_s, char const *s,
 		t_split *s_ind, t_split *sp_ind)
 {
-	split_s[sp_ind->length] =
-		ft_substr(s, s_ind->start, s_ind->length);
+	split_s[sp_ind->length] = ft_substr(s, s_ind->start, s_ind->length);
 	sp_ind->length++;
 	return (split_s);
 }

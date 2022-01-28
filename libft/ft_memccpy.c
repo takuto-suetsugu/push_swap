@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 21:50:42 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/11/30 21:51:28 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:18:00 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t len)
 {
-	unsigned char *ptr_dst;
-	unsigned char *ptr_src;
+	unsigned char	*ptr_dst;
+	unsigned char	*ptr_src;
 
 	ptr_dst = (unsigned char *)dst;
 	ptr_src = (unsigned char *)src;

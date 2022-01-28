@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:18:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2021/08/10 18:10:34 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:17:36 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct	s_split
+typedef struct s_split
 {
-	size_t start;
-	size_t length;
+	size_t	start;
+	size_t	length;
 }				t_split;
 
 long			ft_atoi(const char *str);
@@ -43,7 +43,7 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strnstr(const char *haystack, const char *needle,
-			size_t len);
+					size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 char			*ft_strrchr(const char *s, int c);

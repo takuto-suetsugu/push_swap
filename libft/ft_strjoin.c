@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:11:52 by tsuetsug          #+#    #+#             */
-/*   Updated: 2020/11/30 23:28:37 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:16:50 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	if (!(connected_s = malloc(sizeof(char) *
-					(ft_strlen(s1) + ft_strlen(s2)) +
-					1)))
+	if (!(connected_s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2))
+		+ 1)))
 		return (NULL);
 	i = 0;
 	while (s1[i])
